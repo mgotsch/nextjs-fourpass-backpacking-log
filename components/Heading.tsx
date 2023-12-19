@@ -50,7 +50,7 @@ export default function Heading() {
                     <a href="#">
                     <Image
                         alt="Mac logo"
-                        src='/favicon.ico'
+                        src='/images/mg-logo-white.png'
                         width={75}
                         height={75}
                     />
