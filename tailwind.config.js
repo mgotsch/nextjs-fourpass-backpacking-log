@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = {  
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -20,5 +20,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "forest", "lemonade"],
+  },
 }
