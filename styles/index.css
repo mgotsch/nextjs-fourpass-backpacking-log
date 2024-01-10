@@ -49,3 +49,13 @@ iframe {
 .image-grid img:nth-child(9){
   opacity: 0;
 }
+
+nav
+{
+   position: fixed;
+   top: 0px;
+}
+
+.active {
+  background-color: black;
+}
