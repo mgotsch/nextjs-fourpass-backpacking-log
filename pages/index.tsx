@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link';
+import Heading from '../components/Heading';
 
 export default function Home() {
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Head>
         <title>Four Pass Loop Backpacking Trip</title>
       </Head>
+      <Heading/>
       <div
         className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center"
         style={{
@@ -15,7 +17,7 @@ export default function Home() {
           }}
       >
         <div className="text-slate-200 flex flex-col justify-center items-center backdrop-blur-sm p-10 border-8 border-white border-double">
-          <h1 className="mb-4 text-5xl font-bold uppercase text-center">
+          <h1 className="mb-4 text-5xl font-bold uppercase">
             Four Pass Loop
           </h1>
           <h2 className="text-2xl">

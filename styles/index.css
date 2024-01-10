@@ -56,6 +56,10 @@ nav
    top: 0px;
 }
 
-.active {
+.transparentNav {
+  background-color: transparent;
+}
+
+.filledNav {
   background-color: black;
 }

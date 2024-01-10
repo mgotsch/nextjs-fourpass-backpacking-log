@@ -1,24 +1,40 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Heading() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navbar, setNavbar] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const changeBackground = () => {
+    if(window.scrollY >= 90) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 bg-transparent text-white p-4 px-16 sm:px-8 flex justify-between items-center z-10 shadow-lg">
+    <header className={`fixed top-0 left-0 right-0 text-white p-2 px-16 sm:px-8 flex justify-between items-center z-10 shadow-lg"
+      ${navbar ? "bg-black" : "bg:transparent"}`}
+    >
       {/* Logo */}
-      <a href="/">
+      <Link href="/">
         <Image
           alt="Maroon Bells Line Drawing"
           src='/images/maroonBellsLineArtLine.png'
           width={75}
           height={75}
         />
-      </a>
+      </Link>
 
       {/* Hamburger Menu */}
       <div className="cursor-pointer" onClick={toggleMenu}>
