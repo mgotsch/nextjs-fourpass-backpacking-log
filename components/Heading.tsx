@@ -73,7 +73,7 @@ export default function Heading() {
       >
         {menuOpen && (
           <>
-            <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+            <a href="/crew" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
               The Crew
             </a>
             <a href="/trail" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">

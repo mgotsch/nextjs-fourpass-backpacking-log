@@ -17,3 +17,11 @@ export interface SharedModalProps {
   navigation: boolean
   direction?: number
 }
+
+export interface CrewMemberProps {
+  id: number
+  name: string
+  role: string
+  blurb: string
+  image: string
+}
