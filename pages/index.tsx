@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link';
 import Heading from '../components/Heading';
 
@@ -6,10 +5,7 @@ export default function Home() {
 
   return(
     <>
-      <Head>
-        <title>Four Pass Loop Backpacking Trip</title>
-      </Head>
-      <Heading/>
+      <Heading title={"Four Pass Loop Backpacking Trip"}/>
       <div
         className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center"
         style={{

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import Heading from '../../components/Heading'
-import Head from 'next/head'
 import Modal from '../../components/Modal'
 import cloudinary from '../../utils/cloudinary'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
@@ -29,11 +28,8 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   
   return (
     <>
-      <Heading />
+      <Heading title={"The Gallery"} />
       <main className="mx-auto max-w-[1960px]">
-        <Head>
-          <title>The Gallery</title>
-        </Head>
         <div
           className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center text-center"
           style={{

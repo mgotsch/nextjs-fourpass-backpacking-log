@@ -6,7 +6,7 @@ import DayCard from "../../components/DayCard";
 export default function TrailRoute () {
   return (
     <>
-      <Heading />
+      <Heading title={"The Trail"} />
       <main className="mx-auto max-w-[1960px]">
         <Head>
           <title>The Trail</title>
