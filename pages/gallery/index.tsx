@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import Heading from '../../components/Heading'
+import Head from 'next/head'
 import Modal from '../../components/Modal'
 import cloudinary from '../../utils/cloudinary'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../../utils/types'
 import { useLastViewedPhoto } from '../../utils/useLastViewedPhoto'
 
-const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
+const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter()
   const { photoId } = router.query
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
@@ -29,8 +30,25 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
     <>
       <Heading />
-      <main className="mx-auto max-w-[1960px] p-4 pt-28">
-
+      <main className="mx-auto max-w-[1960px]">
+        <Head>
+          <title>The Gallery</title>
+        </Head>
+        <div
+          className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center text-center"
+          style={{
+            backgroundImage: `url('/images/galleryImg.jpg')`,
+            }}
+        >
+          <div className="text-slate-200 flex flex-col justify-center items-center backdrop-blur-sm p-10 border-8 border-white border-double">
+            <h1 className="mb-4 text-5xl font-bold uppercase">
+              The Gallery
+            </h1>
+            <h2 className="text-xl">
+              Exactly what happens when you put a man inside of nearly 30 miles of postcard-worth vistas and a camera on burst mode.
+            </h2>
+          </div>
+        </div>
         {photoId && (
           <Modal
             images={images}
@@ -39,7 +57,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             }}
           />
         )}
-        <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
+        <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4 p-8">
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <Link
               key={id}
@@ -87,7 +105,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   )
 }
 
-export default Home
+export default Gallery
 
 export async function getStaticProps() {
   const results = await cloudinary.v2.search
