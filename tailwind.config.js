@@ -18,6 +18,9 @@ module.exports = {
         wide: { raw: '(min-aspect-ratio: 3 / 2)' },
         'taller-than-854': { raw: '(min-height: 854px)' },
       },
+      backgroundImage: {
+        'home': "url('/images/landingImg.jpg')"
+      }
     },
   },
   plugins: [require("daisyui")],

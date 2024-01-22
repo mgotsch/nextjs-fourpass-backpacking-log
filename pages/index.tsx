@@ -6,13 +6,8 @@ export default function Home() {
   return(
     <>
       <Heading title={"Four Pass Loop Backpacking Trip"}/>
-      <div
-        className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center"
-        style={{
-          backgroundImage: `url('/images/landingImg.jpg')`,
-          }}
-      >
-        <div className="text-slate-200 flex flex-col justify-center items-center backdrop-blur-sm p-10 border-8 border-white border-double">
+      <div className="bg-home h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center">
+        <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm p-10 border-8 border-white border-double md:w-4/5 lg:w-3/5 xl:w-2/5 2xl:w-2/5">
           <h1 className="mb-4 text-5xl font-bold uppercase">
             Four Pass Loop
           </h1>
