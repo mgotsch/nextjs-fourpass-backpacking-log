@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import Heading from '../../components/Heading'
+import TitleImage from '../../components/TitleImage'
 import Modal from '../../components/Modal'
 import cloudinary from '../../utils/cloudinary'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
@@ -30,21 +31,11 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
     <>
       <Heading title={"The Gallery"} />
       <main className="mx-auto max-w-[1960px]">
-        <div
-          className="h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center text-center"
-          style={{
-            backgroundImage: `url('/images/galleryImg.jpg')`,
-            }}
-        >
-          <div className="text-slate-200 flex flex-col justify-center items-center backdrop-blur-sm p-10 border-8 border-white border-double">
-            <h1 className="mb-4 text-5xl font-bold uppercase">
-              The Gallery
-            </h1>
-            <h2 className="text-xl">
-              Exactly what happens when you put a man inside of nearly 30 miles of postcard-worth vistas and a camera on burst mode.
-            </h2>
-          </div>
-        </div>
+        <TitleImage
+          page="gallery" 
+          title="The Gallery"
+          subTitle="Exactly what happens when you put a person inside of nearly 30 miles of postcard-worth vistas and a camera on burst mode."
+        />
         {photoId && (
           <Modal
             images={images}
