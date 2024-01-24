@@ -9,10 +9,10 @@ export async function fetchImages() {
     console.log('Fetching images...');
 
     const results = await cloudinary.v2.search
-    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
-    .sort_by('public_id', 'asc')
-    .max_results(500)
-    .execute()
+      .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+      .sort_by('public_id', 'asc')
+      .max_results(500)
+      .execute()
     let reducedResults: ImageProps[] = []
 
     let i = 0
@@ -27,14 +27,14 @@ export async function fetchImages() {
       i++
     }
 
-    // const blurImagePromises = results.resources.map((image: ImageProps) => {
-    //   return getBase64ImageUrl(image)
-    // })
-    // const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+    const blurImagePromises = results.resources.map((image: ImageProps) => {
+      return getBase64ImageUrl(image)
+    })
+    const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
 
-    // for (let i = 0; i < reducedResults.length; i++) {
-    //   reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
-    // }
+    for (let i = 0; i < reducedResults.length; i++) {
+      reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+    }
 
     return reducedResults;
 
