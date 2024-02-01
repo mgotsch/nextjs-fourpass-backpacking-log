@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react'
 import Heading from '../../components/Heading'
 import TitleImage from '../../components/TitleImage'
 import Modal from '../../components/Modal'
+import Masonry from 'react-masonry-css'
 import cloudinary from '../../utils/cloudinary'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../../utils/types'
@@ -26,6 +27,13 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
       setLastViewedPhoto(null)
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto])
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1360: 3,
+    1000: 2,
+    640: 1
+  };
   
   return (
     <>
@@ -44,7 +52,11 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
             }}
           />
         )}
-        <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4 p-8">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid p-8"
+          columnClassName="my-masonry-grid_column"
+        >
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <Link
               key={id}
@@ -70,12 +82,13 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
               />
             </Link>
           ))}
+        </Masonry>
+          
           {/* {test.map((element) => (
             <div>
               {element}
             </div>
           ))} */}
-        </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Built and shot by {' '}
