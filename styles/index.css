@@ -15,41 +15,6 @@ iframe {
   overflow:hidden;
 }
 
-.image-grid{
-  padding: 60px;
-  box-sizing: border-box;
-  display: grid;
-  width: 100%;
-  /*grid-template-columns: repeat(8,1fr);*/
-  /* Replaced by: */
-  grid-template-columns: repeat(8,100px);
-  /*grid-auto-columns: 100px;*/ /* This is useless */
-  grid-auto-rows: 200px;
-  grid-gap: 15px;
-  
- 
-}
-
-.image-grid img{
-  margin: 0;
-  padding: 0;
-  width: 100%; /* Shoud be 100% not 70%, width of the column should be manage in the grid container setting */
-  height: 100%;
-  object-fit: cover;
-  /* border: solid red; */
-  border-radius:20px ;
-  
-  margin-right:-30%;
-}
-
-.image-grid img:nth-child(odd){
-  margin-top: 50px;
-}
-
-.image-grid img:nth-child(9){
-  opacity: 0;
-}
-
 nav
 {
    position: fixed;
@@ -81,11 +46,11 @@ nav
 
 .my-masonry-grid {
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -20px; /* gutter size offset */
   width: auto;
 }
 
 .my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: 20px; /* gutter size */
   background-clip: padding-box;
 }
