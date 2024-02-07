@@ -15,10 +15,21 @@ iframe {
   overflow:hidden;
 }
 
+header {
+  -webkit-transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
 nav
 {
-   position: fixed;
-   top: 0px;
+  position: fixed;
+  top: 0px;
+  -webkit-transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .transparentNav {
