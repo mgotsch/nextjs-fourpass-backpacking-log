@@ -11,7 +11,7 @@ const Crew = () => {
         <TitleImage
           page="crew" 
           title="The Crew"
-          subTitle="An intrepid group of some of my favorite folks."
+          subTitle="An intrepid group of some of my favorite folks: nine confirmed people, one possible cyborg, one dog, and a mystical, mysterious, all-powerful force. Wouldn't have been possible (or half as fun) without them all."
         />
         <div className="team-container p-8">
           {crewMembers.map((member) => (
