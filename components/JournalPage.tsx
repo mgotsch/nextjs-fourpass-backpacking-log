@@ -1,32 +1,135 @@
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const { faCircleLeft, faCircleRight } = require('@fortawesome/free-solid-svg-icons');
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { fetchCSV } from '../utils/csvParser';
+import { CldImage } from "next-cloudinary";
 
 export default function JournalPage() {
   
-  const totalPages= 10;
-  const currentPage = 1;
-  const handlePageChange = () => {
-    console.log('Boom');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [entries, setEntries] = useState([]);
+  const [picturePairingData, setPicturePairingData] = useState([]);
+  // const [imageSrc, setImageSrc] = useState("");
+
+  useEffect(() => {
+    fetch('/api/read-file')
+      .then(response => response.json())
+      .then(data => {
+        const parsedEntries = [];
+        let currentDay = 1;
+        for (const paragraph of data) {
+          if (paragraph.startsWith('Day')) {
+            currentDay++;
+          } else {
+            parsedEntries.push({ day: currentDay, text: paragraph });
+          }
+        }
+        setEntries(parsedEntries);
+        setTotalPages(parsedEntries.length);
+      });
+    console.log('Done fetching.');
+  }, []);
+
+  useEffect(() => {
+    async function loadPicturePairingData() {
+      const csvData = await fetchCSV();
+      console.log('data: ', csvData);
+      setPicturePairingData(csvData);
+    }
+
+    loadPicturePairingData();
+    // setImageSrc(`https://res.cloudinary.com/${
+    //   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+    // }/image/upload/c_scale,w_810/Four%20Pass%20Loop/${
+    //   picturePairingData[currentPage - 1]?.file
+    // }`);
+  }, []);
+
+  
+  // const calculateMaxTextHeight = () => {
+  //   const textDivElement = document.createElement('div');
+  //   let maxHeight = 0;
+  //   entries.forEach(entry => {
+  //     textDivElement.textContent = entry.text;
+  //     const height = textDivElement.offsetHeight;
+  //     if (height > maxHeight) {
+  //       maxHeight = height;
+  //     }
+  //   });
+  //   return maxHeight;
+  // };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => (prevPage === 1 ? 1 : prevPage - 1));
   };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => (prevPage === totalPages ? totalPages : prevPage + 1));
+  };
+
+  const handlePageChange = (e) => {
+    const pageNumber = parseInt(e.target.value, 10);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
+  // const maxTextHeight = calculateMaxTextHeight();
+  // console.log(maxTextHeight);
+
+  // console.log(picturePairingData);
+  // console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+  // console.log(process.env.CLOUDINARY_FOLDER);
+  // console.log(`https://res.cloudinary.com/${
+  //   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+  // }/image/upload/c_scale,w_810/Four%20Pass%20Loop/${
+  //   picturePairingData[currentPage - 1]?.file
+  // }`);
+  // console.log(imageSrc);
+  // console.log(picturePairingData[currentPage - 1]?.link);
+  
+
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="mb-4">
-        <Image
-          alt="Trail Log Pic"
-          src="/images/crewImg.jpg"
-          width={800} // Set the desired width
-          height={600} // Set the desired height
-          className="max-w-full h-auto"
-        />
+      <div className="relative mb-4 max-w-screen-lg">
+        <div className="flex justify-between items-center">
+          <div
+            className="hover:bg-gray-200 rounded-l-md transition-colors duration-300 cursor-pointer h-full"
+            onClick={handlePrevPage}
+          >
+            <FontAwesomeIcon icon={faAngleLeft} size="2x" className="m-2" />
+          </div>
+          <div>
+            {/* <CldImage
+              src={imageSrc}
+              width={810}
+              height={540}
+              alt={`Trail Log Pic ${currentPage}`}
+              priority
+              className="max-w-full h-auto"
+            /> */}
+            <CldImage
+              src={`${picturePairingData[currentPage - 1]?.link}`}
+              width={810}
+              height={540}
+              alt={`Trail Log Pic ${currentPage}`}
+              priority
+            />
+          </div>        
+          <div
+            className="hover:bg-gray-200 rounded-r-md transition-colors duration-300 cursor-pointer h-full"
+            onClick={handleNextPage}
+          >
+            <FontAwesomeIcon icon={faAngleRight} size="2x" className="m-2" />
+          </div>
+        </div>
       </div>
-      <div className="mb-4 p-4 bg-gray-200 rounded max-w-screen-lg">
-        <p>As dawn broke on day one, the expedition was split into four separate groups. There was the advanced scouting party, a crack squad of Meg, Piotr, and myself, who had driven out to Basalt the night before and spent the evening acclimating to the altitude (read: putting away a few bevies with my aunt and uncle, gorging ourselves on lasagna that in the following days over yet another freeze-dried meal, we would each fantasize about wildly, and watching a thunderstorm that could principally be described as violent). The next group was Helena, Ben, and Andrea, our initial support force, who were to drive up from Denver that morning and grab a final meal for us to fuel up with at the trailhead. Then we had our duo of Cams, McInnes and Jones. Since Cam M is a big city slicker who runs on NYC time, he figured he'd minimize downtime & maximize profitability by flying in the afternoon of the start day, so Cam J was to pick him up from the airport and head straight out to meet us afterward. Rounding out the squad, we had the incomparable duo of Luke and Teddy (plus their trusty four-legged sidekick, Kenobi) who were going to head up as an adorable lil' domestic unit (s'cute)!</p>
+      <div className="mb-4 p-4 max-w-screen-lg">
+        <p>{entries[currentPage - 1]?.text}</p>
       </div>
       <div className="flex items-center space-x-2">
-        <button className="p-2 bg-gray-200 rounded">
-          <FontAwesomeIcon icon={faCircleLeft} size="2x" />
-        </button>
         <div className="flex items-center space-x-1">
           <div className="flex-1 p-2">
             <input
@@ -43,10 +146,7 @@ export default function JournalPage() {
             <span id="total-pages">{` ${totalPages}`}</span>
           </div>
         </div>
-        <button className="p-2 bg-gray-200 rounded">
-          <FontAwesomeIcon icon={faCircleRight} size="2x" />
-        </button>
       </div>
-    </div>  
+    </div>
   );
 }

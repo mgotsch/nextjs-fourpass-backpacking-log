@@ -20,15 +20,15 @@ export default function TrailRoute () {
             <DayCard day={'Day 2'} route={'Maroon Zone - Geneva Lake'} miles={'10.2 mi'} elevation={'2,680 ft'} passes={2}/>
             <DayCard day={'Day 3'} route={'Geneva Lake - Snowmass Lake'} miles={'4.4 mi'} elevation={'1,522 ft'} passes={1}/>
             <DayCard day={'Day 4'} route={'Snowmass Lake - Trailhead'} miles={'8.3 mi'} elevation={'1,808 ft'} passes={1}/>
+          </div>          
+          <div className="h-16"></div>
+          <div>
+            {/* <h2>Trail Log</h2> */}
+            <JournalPage />
           </div>
           <div className="h-8"></div>
           <div>
             <iframe className="alltrails" src="https://www.alltrails.com/widget/map/four-pass-loop-71a5c05-2?u=i&sh=kp35c4" scrolling='no' width="80%" height="600" title="Four Pass Loop Trail"></iframe>
-          </div>
-          <div className="h-16"></div>
-          <div>
-            <h2>Trail Log</h2>
-            <JournalPage />
           </div>
         </div>
         </main>

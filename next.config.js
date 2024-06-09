@@ -10,6 +10,15 @@ module.exports = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/read-file',
+        destination: '/api/read-file',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 experimental: {
