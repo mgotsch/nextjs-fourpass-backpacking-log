@@ -19,6 +19,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
+    // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     if (lastViewedPhoto && !photoId) {
       lastViewedPhotoRef.current.scrollIntoView({ block: 'center' })
       setLastViewedPhoto(null)
@@ -30,7 +31,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
     1360: 3,
     1000: 2,
     640: 1
-  }
+  };
 
   return (
     <>
@@ -51,35 +52,38 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
         )}
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
+          className="my-masonry-grid p-8"
           columnClassName="my-masonry-grid_column"
         >
-          {images.map(({ id, public_id, format, width, height, blurDataUrl }) => (
-            <Link key={id} href={`/?photoId=${id}`} as={`/photo/${id}`} legacyBehavior>
-              <a
-                ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-                className="block mb-8 transition-opacity duration-300 ease-in-out hover:opacity-75"
-              >
-                <div className="relative w-full h-0 pb-[66.66%] overflow-hidden rounded-lg bg-gray-200 shadow-md">
-                  <Image
-                    alt=""
-                    placeholder="blur"
-                    blurDataURL={blurDataUrl}
-                    src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
-                    layout="fill"
-                    objectFit="cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-                    loading="lazy"
-                    className="rounded-lg"
-                  />
-                </div>
-              </a>
+          {images.map(({ id, public_id, format, blurDataUrl }) => (
+            <Link
+              key={id}
+              href={`/gallery/?photoId=${id}`}
+              as={`/gallery/p/${id}`}
+              ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
+              shallow
+              className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+            >
+              <Image
+                alt="Mac photo"
+                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
+                src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
+                width={720}
+                height={480}
+                sizes="(max-width: 640px) 100vw,
+                  (max-width: 1280px) 50vw,
+                  (max-width: 1536px) 33vw,
+                  25vw"
+              />
             </Link>
           ))}
         </Masonry>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
-        Built and shot by{' '}
+        Built and shot by {' '}
         <a
           href="https://macgotsch.com/"
           target="_blank"
