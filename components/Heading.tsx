@@ -32,7 +32,7 @@ export default function Heading({
       <Head>
         <title>{title}</title>
       </Head>
-      <header className={`fixed top-0 left-0 right-0 text-white p-2 px-16 sm:px-8 flex justify-between items-center z-10 shadow-lg"
+      <header className={`fixed top-0 left-0 right-0 text-white p-2 sm:px-8 flex justify-between items-center z-10 shadow-lg"
         ${navbar ? "bg-black" : "bg:transparent"}`}
       >
         {/* Logo */}
@@ -71,24 +71,23 @@ export default function Heading({
             )}
           </svg>
         </div>
-
         {/* Navigation Links */}
         <nav
-          className={`${
+          className={`navlinks ${
             menuOpen
-              ? 'absolute top-full right-0 bg-black p-4 flex flex-col items-end'
+              ? `absolute top-full right-0 px-4 flex flex-col items-end ${navbar ? "bg-black" : "bg:gray-400"}`
               : 'hidden'
           } lg:flex lg:items-start lg:w-auto`}
         >
           {menuOpen && (
             <>
-              <a href="/crew" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+              <a href="/crew" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
                 The Crew
               </a>
-              <a href="/trail" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+              <a href="/trail" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
                 The Trail
               </a>
-              <a href="/gallery" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+              <a href="/gallery" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
                 The Gallery
               </a>
             </>

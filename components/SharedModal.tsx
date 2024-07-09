@@ -47,6 +47,9 @@ export default function SharedModal({
 
   let currentImage = images ? images[index] : currentPhoto
 
+  // Dynamically determine aspect ratio
+  const portraitAspect = currentImage.height > currentImage.width;
+
   return (
     <MotionConfig
       transition={{
@@ -55,12 +58,12 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
+        className={`relative z-50 flex w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto ${portraitAspect ? 'aspect-[2/3] w-[600px]' : 'aspect-[3/2] w-[1280px]'}`}
         {...handlers}
       >
         {/* Main image */}
         <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2] items-center justify-center">
+          <div className={`relative flex items-center justify-center ${portraitAspect ? 'aspect-[2/3]' : 'aspect-[3/2]'}`}>
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
@@ -92,7 +95,7 @@ export default function SharedModal({
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
           {loaded && (
-            <div className="relative aspect-[3/2] max-h-full w-full">
+            <div className={`relative max-h-full w-full ${portraitAspect ? 'aspect-[2/3]' : 'aspect-[3/2]'}`}>
               {navigation && (
                 <>
                   {index > 0 && (
