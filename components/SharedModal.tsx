@@ -58,7 +58,7 @@ export default function SharedModal({
       }}
     >
       <div
-        className={`relative z-50 flex w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto ${portraitAspect ? 'aspect-[2/3] w-[600px]' : 'aspect-[3/2] w-[1280px]'}`}
+        className={`relative z-50 flex max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto ${portraitAspect ? 'aspect-[2/3] w-[600px]' : 'aspect-[3/2] w-[1280px]'}`}
         {...handlers}
       >
         {/* Main image */}
@@ -77,7 +77,7 @@ export default function SharedModal({
                 <Image
                   src={`https://res.cloudinary.com/${
                     process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                  }/image/upload/c_scale,${navigation ? 'w_1280' : 'w_1920'}/${
+                  }/image/upload/c_scale,${navigation ? 'w_1920' : 'w_2560'}/${
                     currentImage.public_id
                   }.${currentImage.format}`}
                   width={navigation ? 1280 : 1920}
