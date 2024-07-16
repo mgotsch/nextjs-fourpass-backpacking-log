@@ -49,7 +49,6 @@ export default function SharedModal({
 
   // Dynamically determine aspect ratio
   const portraitAspect = currentImage.height > currentImage.width;
-  console.log(portraitAspect);
 
   return (
     <MotionConfig
