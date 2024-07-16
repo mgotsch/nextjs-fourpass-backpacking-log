@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useRef } from 'react'
 import Heading from '../../components/Heading'
 import TitleImage from '../../components/TitleImage'
 import Modal from '../../components/Modal'
@@ -16,8 +16,6 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter()
   const { photoId } = router.query
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
-  // const test = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-
   const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
@@ -34,7 +32,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
     1000: 2,
     640: 1
   };
-  
+
   return (
     <>
       <Heading title={"The Gallery"} />
@@ -83,12 +81,6 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
             </Link>
           ))}
         </Masonry>
-          
-          {/* {test.map((element) => (
-            <div>
-              {element}
-            </div>
-          ))} */}
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Built and shot by {' '}
@@ -99,7 +91,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
           rel="noreferrer"
         >
           Mac Gotsch
-        </a>{' '}
+        </a>
       </footer>
     </>
   )
@@ -113,32 +105,22 @@ export async function getStaticProps() {
     .sort_by('public_id', 'asc')
     .max_results(500)
     .execute()
-  let reducedResults: ImageProps[] = []
 
-  let i = 0
-  for (let result of results.resources) {
-    reducedResults.push({
-      id: i,
+  const images = await Promise.all(results.resources.map(async (result, index) => {
+    const blurDataUrl = await getBase64ImageUrl(result)
+    return {
+      id: index,
       height: result.height,
       width: result.width,
       public_id: result.public_id,
       format: result.format,
-    })
-    i++
-  }
-
-  const blurImagePromises = results.resources.map((image: ImageProps) => {
-    return getBase64ImageUrl(image)
-  })
-  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-
-  for (let i = 0; i < reducedResults.length; i++) {
-    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
-  }
+      blurDataUrl
+    }
+  }))
 
   return {
     props: {
-      images: reducedResults,
-    },
+      images
+    }
   }
 }
