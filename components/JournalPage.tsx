@@ -89,7 +89,9 @@ export default function JournalPage() {
   // console.log(imageSrc);
   // console.log(picturePairingData[currentPage - 1]?.link);
   
-
+  const currentImageSrc = `${picturePairingData[currentPage - 1]?.link}`;
+  const prevImageSrc = currentPage > 1 ? `${picturePairingData[currentPage - 2]?.link}` : null;
+  const nextImageSrc = currentPage < totalPages ? `${picturePairingData[currentPage]?.link}` : null;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -101,23 +103,39 @@ export default function JournalPage() {
           >
             <FontAwesomeIcon icon={faAngleLeft} size="2x" className="m-2" />
           </div>
-          <div>
-            {/* <CldImage
-              src={imageSrc}
-              width={810}
-              height={540}
-              alt={`Trail Log Pic ${currentPage}`}
-              priority
-              className="max-w-full h-auto"
-            /> */}
+          <div className="relative w-[810px] h-[540px]">
             <CldImage
-              src={`${picturePairingData[currentPage - 1]?.link}`}
+              src={currentImageSrc}
               width={810}
               height={540}
+              dpr="1.7"
               alt={`Trail Log Pic ${currentPage}`}
               priority
+              className="absolute inset-0 w-full h-full object-contain"
             />
-          </div>        
+            {prevImageSrc && (
+              <CldImage
+                src={prevImageSrc}
+                width={810}
+                height={540}
+                dpr="1.7"
+                alt={`Trail Log Pic ${currentPage - 1}`}
+                className="hidden"
+                priority
+              />
+            )}
+            {nextImageSrc && (
+              <CldImage
+                src={nextImageSrc}
+                width={810}
+                height={540}
+                dpr="1.7"
+                alt={`Trail Log Pic ${currentPage + 1}`}
+                className="hidden"
+                priority
+              />
+            )}
+          </div>         
           <div
             className="hover:bg-gray-200 rounded-r-md transition-colors duration-300 cursor-pointer h-full"
             onClick={handleNextPage}
