@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { fetchCSV } from '../utils/csvParser';
-import { CldImage } from "next-cloudinary";
+import { motion, Variant } from "framer-motion";
+import LogCarousel from "./LogCarousel";
+
 
 export default function JournalPage() {
-  
-  const [currentPage, setCurrentPage] = useState(1);
+  const [transitionDirection, setTransitionDirection] = useState("next");
+  const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [entries, setEntries] = useState([]);
   const [picturePairingData, setPicturePairingData] = useState([]);
-  // const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
     fetch('/api/read-file')
@@ -37,122 +38,104 @@ export default function JournalPage() {
       console.log('data: ', csvData);
       setPicturePairingData(csvData);
     }
-
     loadPicturePairingData();
-    // setImageSrc(`https://res.cloudinary.com/${
-    //   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-    // }/image/upload/c_scale,w_810/Four%20Pass%20Loop/${
-    //   picturePairingData[currentPage - 1]?.file
-    // }`);
   }, []);
 
-  
-  // const calculateMaxTextHeight = () => {
-  //   const textDivElement = document.createElement('div');
-  //   let maxHeight = 0;
-  //   entries.forEach(entry => {
-  //     textDivElement.textContent = entry.text;
-  //     const height = textDivElement.offsetHeight;
-  //     if (height > maxHeight) {
-  //       maxHeight = height;
-  //     }
-  //   });
-  //   return maxHeight;
-  // };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevPage();
+      } else if (e.key === 'ArrowRight') {
+        handleNextPage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentPage, totalPages]);
 
   const handlePrevPage = () => {
-    setCurrentPage((prevPage) => (prevPage === 1 ? 1 : prevPage - 1));
+    setTransitionDirection("previous");
+    setCurrentPage((prevPage) => (prevPage === 0 ? 0 : prevPage - 1));
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => (prevPage === totalPages ? totalPages : prevPage + 1));
+    setTransitionDirection("next");
+    setCurrentPage((prevPage) => (prevPage === totalPages - 1 ? totalPages - 1 : prevPage + 1));
   };
 
   const handlePageChange = (e) => {
     const pageNumber = parseInt(e.target.value, 10);
     if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
+      setTransitionDirection(pageNumber > currentPage + 1 ? "next" : "previous");
+      setCurrentPage(pageNumber - 1);
     }
   };
 
-  // const maxTextHeight = calculateMaxTextHeight();
-  // console.log(maxTextHeight);
+  const getUniqueImageQueue = () => {
+    const uniqueImages = [];
+    let page = currentPage - 1;
+    while (uniqueImages.length < 4 && page < totalPages) {
+      const imageSrc = `${picturePairingData[page]?.link}` || `${picturePairingData[1]?.link}`;
+      if (!uniqueImages.includes(imageSrc)) {
+        uniqueImages.push(imageSrc);
+      }
+      page++;
+    }
+    return uniqueImages;
+  };
 
-  // console.log(picturePairingData);
-  // console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
-  // console.log(process.env.CLOUDINARY_FOLDER);
-  // console.log(`https://res.cloudinary.com/${
-  //   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  // }/image/upload/c_scale,w_810/Four%20Pass%20Loop/${
-  //   picturePairingData[currentPage - 1]?.file
-  // }`);
-  // console.log(imageSrc);
-  // console.log(picturePairingData[currentPage - 1]?.link);
-  
-  const currentImageSrc = `${picturePairingData[currentPage - 1]?.link}`;
-  const prevImageSrc = currentPage > 1 ? `${picturePairingData[currentPage - 2]?.link}` : null;
-  const nextImageSrc = currentPage < totalPages ? `${picturePairingData[currentPage]?.link}` : null;
+  const uniqueImageQueue = getUniqueImageQueue();
+
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      x: transitionDirection === "next" ? 100 : -100,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="relative mb-4 max-w-screen-lg">
-        <div className="flex justify-between items-center">
-          <div
-            className="hover:bg-gray-200 rounded-l-md transition-colors duration-300 cursor-pointer h-full"
-            onClick={handlePrevPage}
-          >
-            <FontAwesomeIcon icon={faAngleLeft} size="2x" className="m-2" />
-          </div>
-          <div className="relative w-[810px] h-[540px]">
-            <CldImage
-              src={currentImageSrc}
-              width={810}
-              height={540}
-              dpr="1.7"
-              alt={`Trail Log Pic ${currentPage}`}
-              priority
-              className="absolute inset-0 w-full h-full object-contain"
-            />
-            {prevImageSrc && (
-              <CldImage
-                src={prevImageSrc}
-                width={810}
-                height={540}
-                dpr="1.7"
-                alt={`Trail Log Pic ${currentPage - 1}`}
-                className="hidden"
-                priority
-              />
-            )}
-            {nextImageSrc && (
-              <CldImage
-                src={nextImageSrc}
-                width={810}
-                height={540}
-                dpr="1.7"
-                alt={`Trail Log Pic ${currentPage + 1}`}
-                className="hidden"
-                priority
-              />
-            )}
-          </div>         
-          <div
-            className="hover:bg-gray-200 rounded-r-md transition-colors duration-300 cursor-pointer h-full"
-            onClick={handleNextPage}
-          >
-            <FontAwesomeIcon icon={faAngleRight} size="2x" className="m-2" />
-          </div>
-        </div>
+        <LogCarousel
+          currentPage={currentPage}
+          uniqueImageQueue={uniqueImageQueue}
+          transitionDirection={transitionDirection}
+        />
       </div>
       <div className="mb-4 p-4 max-w-screen-lg">
-        <p>{entries[currentPage - 1]?.text}</p>
+        <motion.div
+          key={currentPage}
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.p variants={textVariants}>
+            {entries[currentPage]?.text}
+          </motion.p>
+        </motion.div>
       </div>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 relative">
+        <button
+          className={`flex items-center justify-center bg-transparent h-[4.5rem] w-[4.5rem] border-solid ${currentPage !== 0 ? 'cursor-pointer' : 'cursor-default'}`}
+          onClick={handlePrevPage}
+          disabled={currentPage === 0}
+        >
+          <FontAwesomeIcon icon={faAngleLeft} size="2x" className="m-2" />
+        </button>
         <div className="flex items-center space-x-1">
           <div className="flex-1 p-2">
             <input
               type="number"
-              value={currentPage}
+              value={currentPage + 1}
               onChange={handlePageChange}
               min="1"
               max={totalPages}
@@ -164,6 +147,13 @@ export default function JournalPage() {
             <span id="total-pages">{` ${totalPages}`}</span>
           </div>
         </div>
+        <button
+          className={`flex items-center justify-center bg-transparent h-[4.5rem] w-[4.5rem] border-solid ${currentPage !== totalPages - 1 ? 'cursor-pointer' : 'cursor-default'}`}
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages - 1}
+        >
+          <FontAwesomeIcon icon={faAngleRight} size="2x" className="m-2" />
+        </button>
       </div>
     </div>
   );

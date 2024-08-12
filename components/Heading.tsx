@@ -42,6 +42,7 @@ export default function Heading({
             src='/images/maroonBellsLineArtLine.png'
             width={75}
             height={75}
+            priority
           />
         </Link>
 
