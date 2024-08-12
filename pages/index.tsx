@@ -24,17 +24,17 @@ export default function Home() {
         <div className="h-8"></div>
         <div className="flex flex-row justify-center items-center space-x-10">
           <Link href="/crew">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap">
+            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap duration-500">
               The Crew
             </button>
           </Link>
           <Link href="/trail">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600">
+            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-500">
               The Trail
             </button>
           </Link>
           <Link href="/gallery">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600">
+            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-500">
               The Gallery
             </button>
           </Link>

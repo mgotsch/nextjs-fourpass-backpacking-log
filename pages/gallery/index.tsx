@@ -40,7 +40,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
         <TitleImage
           page="gallery" 
           title="The Gallery"
-          subTitle="Exactly what happens when you put a person inside of nearly 30 miles of postcard-worth vistas and a camera on burst mode."
+          subTitle="Exactly what happens when you put a person inside of nearly 30 miles of postcard-worth vistas and a camera accidentally on burst mode."
         />
         {photoId && (
           <Modal
