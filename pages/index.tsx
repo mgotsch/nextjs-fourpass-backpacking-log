@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Heading title={"Four Pass Loop Backpacking Trip"}/>
       <div className="bg-home h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center">
-        <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm p-10 border-8 border-white border-double md:w-4/5 lg:w-3/5 xl:w-2/5 2xl:w-2/5">
+        <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm p-10 border-8 border-white border-double w-4/5 max-w-[700px]">
           <h1 className="mb-4 text-5xl font-bold uppercase">
             Four Pass Loop
           </h1>
@@ -22,20 +22,25 @@ export default function Home() {
           </p>
         </div>
         <div className="h-8"></div>
-        <div className="flex flex-row justify-center items-center space-x-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 justify-center items-center">
           <Link href="/crew">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap duration-500">
-              The Crew
+            <button className="w-36 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap duration-300">
+              Our Crew
             </button>
           </Link>
           <Link href="/trail">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-500">
-              The Trail
+            <button className="w-36 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-300">
+              The Loop
+            </button>
+          </Link>
+          <Link href="/journal">
+            <button className="w-36 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-300">
+              Trail Log
             </button>
           </Link>
           <Link href="/gallery">
-            <button className="w-32 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-500">
-              The Gallery
+            <button className="w-36 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-300">
+              Photo Gallery
             </button>
           </Link>
         </div>

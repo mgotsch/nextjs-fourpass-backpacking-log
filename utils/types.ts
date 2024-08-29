@@ -25,3 +25,19 @@ export interface CrewMemberProps {
   blurb: string
   image: string
 }
+
+export interface DayData {
+  day: string
+  route: string
+  miles: string
+  elevation: string
+  passes: number
+}
+
+export interface MapData {
+  0: string
+  1: string
+  2: string
+  3: string
+  4: string
+}
