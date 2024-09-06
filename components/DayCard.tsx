@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DayData } from "../utils/types";
 const { faPersonHiking, faChartLine, faMountainSun } = require("@fortawesome/free-solid-svg-icons");
 
-export default function DayCard({day, route, miles, elevation, passes}) {
-  
+export default function DayCard({day, route, miles, elevation, passes} : DayData) {
   return (
-    <div className="relative mb-5 flex flex-col items-center overflow-hidden py-16 rounded-lg bg-neutral text-center shadow-highlight">
+    <div className="relative flex flex-col items-center overflow-hidden py-16 rounded-lg bg-neutral text-center shadow-highlight">
       <h2 className="text-2xl font-bold">{day}</h2>
       <h3 className="italic">{route}</h3>
       <hr className="w-48 h-px my-2 mx-auto bg-gray-400 border-0 dark:bg-gray-700" />      

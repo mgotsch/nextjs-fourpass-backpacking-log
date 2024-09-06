@@ -49,7 +49,7 @@ export default function Heading({
         {/* Hamburger Menu */}
         <div className="cursor-pointer" onClick={toggleMenu}>
           <svg
-            className="w-6 h-6"
+            className="w-8 h-8"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -83,13 +83,16 @@ export default function Heading({
           {menuOpen && (
             <>
               <a href="/crew" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
-                The Crew
+                Our Crew
               </a>
-              <a href="/trail" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
-                The Trail
+              <a href="/loop" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+                The Loop
+              </a>
+              <a href="/traillog" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+                Trail Log
               </a>
               <a href="/gallery" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
-                The Gallery
+                Photo Gallery
               </a>
             </>
           )}

@@ -5,7 +5,7 @@ const crewMembers: CrewMemberProps[] = [
     id: 1,
     name: 'Mac',
     role: 'Expedition Leader',
-    blurb: 'The head honcho, the big cheese, the crew’s veritable Ernest Shackleton. Have I gone to far? Perhaps, but I’m the one making the site and writing the copy, so tough luck. This important role does not come without hard work and sacrifice! I rallied the troops, braved the doomsday-prepper’s lair to acquire affordable freeze dried meals, made packing lists, hosted coordination calls, and selflessly tripped over a root night one and destroyed McInnes’ chair to teach everyone a valuable lesson about bringing untested gear into the field (you’re welcome Cam).',
+    blurb: 'The head honcho, the big cheese, the crew’s veritable Ernest Shackleton. Have I gone to far? Perhaps, but I’m the one making the site and writing the copy, so tough luck. This important role does not come without hard work and sacrifice! I rallied the troops, braved the doomsday-prepper’s lair to acquire affordable freeze dried meals, made packing lists, hosted coordination calls, and selflessly tripped over a root night one and destroyed McInnes’ chair to teach everyone a valuable lesson about bringing untested gear into the field (you’re welcome Cam)!',
     image: '/images/team/Mac.jpg',
   },
   {
@@ -75,7 +75,7 @@ const crewMembers: CrewMemberProps[] = [
     id: 11,
     name: 'Kenobi',
     role: 'Goodest Boy',
-    blurb: 'Not going to lie, was a lil’ worried about how this sweet munchkin’s backcountry manners would hold up, but he was remarkably well-behaved! Not only did he stay on trail, but his eager kisses were the closest any of us had to a shower over the 4 days! And so what if he might have made a move for a friend’s dad?? The guy was dressed like a tasty piece of jerky and he’s only human (wait, no… canine), so who can blame him.',
+    blurb: 'Not going to lie, was a lil’ worried about how this sweet munchkin’s backcountry manners would hold up, but he was remarkably well-behaved! Not only did he stay on trail, but his eager kisses were the closest any of us had to a shower over the 4 days! And so what if he might have made a move for a friend’s dad?? The guy was dressed like a tasty piece of jerky and ’Nobi is only human (wait, no… canine), so who can blame him.',
     image: '/images/team/Kenobi.jpg',
   },
   {
