@@ -13,7 +13,7 @@ export default function DayCard({day, route, miles, elevation, passes} : DayData
           <tr>
             <th>
               <FontAwesomeIcon icon={faPersonHiking} /><br />
-              Trail
+              Distance
             </th>
             <th>
               <FontAwesomeIcon icon={faChartLine} /><br />

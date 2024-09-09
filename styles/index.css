@@ -23,6 +23,14 @@ p {
 nav a {
   font-family: var(--font-montserrat);
 }
+
+th {
+  font-family: var(--font-montserrat);
+}
+
+td {
+  font-family: var(--font-montserrat);
+}
  
 input, #total-pages{
   font-family: var(--font-montserrat);
