@@ -28,12 +28,12 @@ export default function Home() {
               Our Crew
             </button>
           </Link>
-          <Link href="/trail">
+          <Link href="/loop">
             <button className="title-button w-40 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-300">
               The Loop
             </button>
           </Link>
-          <Link href="/journal">
+          <Link href="/traillog">
             <button className="title-button w-40 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 duration-300">
               Trail Log
             </button>
