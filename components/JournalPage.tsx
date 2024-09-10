@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { fetchCSV } from '../utils/csvParser';
-import { motion, Variant } from "framer-motion";
+import { motion } from "framer-motion";
 import LogCarousel from "./LogCarousel";
-
+import DayCard from "./DayCard";
+import dayData from "../data/dayData";
+import dayMaps from "../data/dayMaps";
 
 export default function JournalPage() {
   const [transitionDirection, setTransitionDirection] = useState("next");
@@ -18,7 +20,7 @@ export default function JournalPage() {
       .then(response => response.json())
       .then(data => {
         const parsedEntries = [];
-        let currentDay = 1;
+        let currentDay = 0;
         for (const paragraph of data) {
           if (paragraph.startsWith('Day')) {
             currentDay++;
@@ -35,7 +37,6 @@ export default function JournalPage() {
   useEffect(() => {
     async function loadPicturePairingData() {
       const csvData = await fetchCSV();
-      console.log('data: ', csvData);
       setPicturePairingData(csvData);
     }
     loadPicturePairingData();
@@ -102,6 +103,8 @@ export default function JournalPage() {
     },
   };
 
+  const tripDay = entries[currentPage]?.day;
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="relative mb-4 max-w-screen-lg">
@@ -154,6 +157,15 @@ export default function JournalPage() {
         >
           <FontAwesomeIcon icon={faAngleRight} size="2x" className="m-2" />
         </button>
+      </div>
+      <div className="h-8"></div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 w-full">
+        <div className="col-span-2 h-[300px] px-4 xl:p-10">
+          <DayCard {...dayData[tripDay]}/>
+        </div>
+        <div className="col-span-3 px-10">
+          <iframe className="alltrails" src={dayMaps[tripDay]} width="95%" height="400" title="Four Pass Loop Trail"></iframe>
+        </div>
       </div>
     </div>
   );

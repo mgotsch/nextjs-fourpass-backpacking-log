@@ -35,11 +35,11 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   return (
     <>
-      <Heading title={"The Gallery"} />
+      <Heading title={"Photo Gallery"} />
       <main className="mx-auto max-w-[1960px]">
         <TitleImage
           page="gallery" 
-          title="The Gallery"
+          title="Photo Gallery"
           subTitle="Exactly what happens when you put a person inside of nearly 30 miles of postcard-worth vistas and a camera accidentally on burst mode."
         />
         {photoId && (
