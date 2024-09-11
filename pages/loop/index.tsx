@@ -23,9 +23,9 @@ const FourPassLoop : NextPage = () => {
               title="Four Pass Loop Overview"
               subtitle="For those without an eon to read through the Trail Log, here's your TL;DR"
             />
-            <div className="grid lg:grid-cols-2 gap-4">
-              <div className="order-1 lg:order-1 flex flex-col justify-center p-4">
-                <p className="mb-6">
+            <div className="grid lg:grid-cols-2 gap-4 text-justify">
+              <div className="order-1 lg:order-1 flex flex-col justify-center p-4 xl:text-lg">
+                <p className="m-2">
                   The Four Pass Loop in the Maroon Bells-Snowmass Wilderness of Colorado is a stunning and challenging trek 
                   that offers hikers an unforgettable journey through some of the most picturesque landscapes in the Rocky 
                   Mountains. Spanning approximately 27 miles, this loop trail circles the famous Maroon Bells, a pair of iconic 
@@ -34,7 +34,7 @@ const FourPassLoop : NextPage = () => {
                   add in a stop and night's stay at Geneva Lake, a secluded, enchanting, and sometimes buggy alpine lake. 
                 </p>
               </div>
-              <div className="order-2 lg:order-2">
+              <div className="order-2 lg:order-2 content-center">
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174616/Four%20Pass%20Loop/20230805-_DSF2245_ipwag5.jpg"
                   width={810}
@@ -45,7 +45,7 @@ const FourPassLoop : NextPage = () => {
                   className="w-auto max-h-[540px] mx-auto my-4"
                 /> 
               </div>
-              <div className="order-4 lg:order-3">          
+              <div className="order-4 lg:order-3 content-center">          
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174117/Four%20Pass%20Loop/20230804-_DSF1037_dbsg4t.jpg"
                   width={810}
@@ -56,19 +56,19 @@ const FourPassLoop : NextPage = () => {
                   className="w-auto max-h-[540px] mx-auto my-4"
                 />
               </div>
-              <div className="order-3 lg:order-4 flex flex-col justify-center p-4">
-                <p className="mb-6">
+              <div className="order-3 lg:order-4 flex flex-col justify-center p-4 xl:text-lg">
+                <p className="m-2">
                   The dramatic array scenery that can be taken in on this trail can only be described as awe-inspiring. From 
                   jagged peaks & lush, wildflower-filled meadows to crystal-clear alpine lakes and dense forests of aspen and pine, 
                   the diversity and majesty of the sights leaves one slack-jawed. Experiencing this trail really is paramount to 
                   walking through postcard vista after postcard vista for days on end (quite frankly, it's dizzying)! Adventurers 
                   can expect more than just running into real-life landscape artwork and other backpackers too as wildlife is 
-                  abundant throughout the area. ItU+2019s not uncommon to spot marmots, pikas, and the occasional elk or deer along 
+                  abundant throughout the area. It’s not uncommon to spot marmots, pikas, and the occasional elk or deer along 
                   the trail, a reminder of how wild this place still is. 
                 </p>
               </div>
-              <div className="order-5 lg:order-5 flex flex-col justify-center p-4">
-                <p className="mb-6">
+              <div className="order-5 lg:order-5 flex flex-col justify-center p-4 xl:text-lg">
+                <p className="m-2">
                   But all this splendor doesn't come easy! Each of the four passes the trail is named for reach elevations over 
                   12,000 feet, so the climbs leave you as short of breath as the panoramic views at the top do. And unless you're 
                   completing it in a day (which with the number of insane trail runners Colorado is teeming with, this is more 
@@ -77,7 +77,7 @@ const FourPassLoop : NextPage = () => {
                   identifying areas that aren't sore than listing off the countless that are. 
                 </p>
               </div>
-              <div className="order-6 lg:order-6">
+              <div className="order-6 lg:order-6 content-center">
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174466/Four%20Pass%20Loop/20230805-_DSF1833_jdgrv2.jpg"
                   width={810}
@@ -85,10 +85,10 @@ const FourPassLoop : NextPage = () => {
                   dpr="1.7"
                   alt="Overview Pic 1"
                   priority
-                  className="w-auto h-full mx-auto my-4"
+                  className="w-auto max-h-[540px] mx-auto my-4"
                 />
               </div>
-              <div className="order-8 lg:order-7">
+              <div className="order-8 lg:order-7 content-center">
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174764/Four%20Pass%20Loop/20230806-_DSF2657_kigyn1.jpg"
                   width={810}
@@ -99,8 +99,8 @@ const FourPassLoop : NextPage = () => {
                   className="w-auto max-h-[540px] mx-auto my-4"
                 />
               </div>
-              <div className="order-7 lg:order-8 flex flex-col justify-center p-4">
-                <p className="mb-6">
+              <div className="order-7 lg:order-8 flex flex-col justify-center p-4 xl:text-lg">
+                <p className="m-2">
                   In spite of these harsh realities, the general masses have not been dissuaded and competition for the limited 
                   overnight permits is fierce. So much so in fact that most are gone within minutes of their release and for the 
                   highly-coveted weekend spots we sought, that window is reduced down to a matter of seconds. After briefly 

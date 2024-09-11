@@ -76,12 +76,15 @@ export default function Heading({
         <nav
           className={`navlinks ${
             menuOpen
-              ? `absolute top-full right-0 px-4 flex flex-col items-end ${navbar ? "bg-black" : "bg:gray-400"}`
+              ? `absolute top-full right-0 px-4 flex flex-col items-end pr-7 ${navbar ? "bg-black" : "bg:gray-400"}`
               : 'hidden'
-          } lg:flex lg:items-start lg:w-auto`}
+          } lg:flex lg:w-auto`}
         >
           {menuOpen && (
             <>
+              <a href="/" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
+                Home
+              </a>
               <a href="/crew" className="block my-2 lg:inline-block lg:mt-0 text-white hover:text-gray-300">
                 Our Crew
               </a>

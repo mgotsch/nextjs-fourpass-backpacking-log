@@ -16,12 +16,12 @@ export default function CrewMember({
         width={200}
         height={200}
       />
-      <div className="p-1">
+      <div className="p-2">
         <h2 className="text-2xl font-bold">{crewMember.name}</h2>
         <h3 className="italic">{crewMember.role}</h3>
       </div>
-      <hr className="w-48 h-px my-2 mx-auto bg-gray-400 border-0 dark:bg-gray-700" />      
-      <p>{crewMember.blurb}</p>
+      <hr className="w-48 h-px my-1 mx-auto bg-gray-400 border-0 dark:bg-gray-700" />      
+      <p className="py-2">{crewMember.blurb}</p>
     </div>
   );
 }

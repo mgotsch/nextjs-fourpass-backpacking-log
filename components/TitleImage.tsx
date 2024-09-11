@@ -18,9 +18,9 @@ export default function TitleImage({
           <h1 className="mb-4 text-5xl font-bold uppercase">
             {title}
           </h1>
-          <h2 className="text-xl">
+          <h3 className="text-xl">
             {subTitle}
-          </h2>
+          </h3>
         </div>
       </div>
     </>

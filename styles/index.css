@@ -8,6 +8,38 @@
   }
 }
 
+h1 { 
+  font-family: var(--font-oswald);
+}
+
+h2, h3 {
+  font-family: var(--font-montserrat);
+}
+
+p { 
+  font-family: var(--font-source-serif);
+}
+
+nav a {
+  font-family: var(--font-montserrat);
+}
+
+th {
+  font-family: var(--font-montserrat);
+}
+
+td {
+  font-family: var(--font-montserrat);
+}
+ 
+input, #total-pages{
+  font-family: var(--font-montserrat);
+}
+
+.title-button {
+  font-family: var(--font-montserrat);
+}
+
 iframe {
   margin: 0 auto;
   display: block;
@@ -22,8 +54,7 @@ header {
   transition: background-color 0.5s;
 }
 
-nav
-{
+nav {
   position: fixed;
   top: 0px;
   -webkit-transition: background-color 0.5s;
@@ -50,6 +81,7 @@ nav
 }
 
 .team-container {
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;

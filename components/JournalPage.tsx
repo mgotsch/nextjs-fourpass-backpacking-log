@@ -114,7 +114,7 @@ export default function JournalPage() {
           transitionDirection={transitionDirection}
         />
       </div>
-      <div className="mb-4 p-4 max-w-screen-lg">
+      <div className="mb-4 p-4 max-w-screen-lg lg:h-[275px]">
         <motion.div
           key={currentPage}
           variants={textVariants}
@@ -142,7 +142,7 @@ export default function JournalPage() {
               onChange={handlePageChange}
               min="1"
               max={totalPages}
-              className="w-12 px-2 py-1 text-center appearance-none"
+              className="px-2 py-1 text-center appearance-none"
             />
           </div>
           <div className="p-2 flex items-center">/</div>
@@ -163,7 +163,7 @@ export default function JournalPage() {
         <div className="col-span-2 h-[300px] px-4 xl:p-10">
           <DayCard {...dayData[tripDay]}/>
         </div>
-        <div className="col-span-3 px-10">
+        <div className="col-span-3 px-4">
           <iframe className="alltrails" src={dayMaps[tripDay]} width="95%" height="400" title="Four Pass Loop Trail"></iframe>
         </div>
       </div>
