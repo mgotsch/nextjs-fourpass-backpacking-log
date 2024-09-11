@@ -5,7 +5,7 @@ export default function Home() {
 
   return(
     <>
-      <Heading title={"Four Pass Loop Backpacking Trip"}/>
+      <Heading title={"Four Days on the Four Pass Loop"}/>
       <div className="bg-home h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center">
         <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm p-10 border-8 border-white border-double w-4/5 max-w-[700px]">
           <h1 className="my-4 text-6xl font-bold uppercase">
