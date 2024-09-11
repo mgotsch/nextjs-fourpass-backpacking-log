@@ -13,7 +13,7 @@
 - [Performance Considerations](#performance-considerations)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
+- [Screenshots](#screensshots)
 - [License](#license)
 
 ## Features
@@ -109,10 +109,6 @@ To run this project locally, follow these steps:
 
 - Use the **hamburger menu** on the top right to navigate between routes.
 - Explore each section to learn more about the trip, crew, and photos. Really not much more to it!
-
-## Screenshots
-
-- Include relevant screenshots of each route here, showcasing the user interface, animations, and features.
 
 ## License
 
