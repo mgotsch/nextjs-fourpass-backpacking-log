@@ -35,7 +35,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   return (
     <>
-      <Heading title={"Photo Gallery"} />
+      <Heading title={"Photo Gallery - Four Days on the Four Pass Loop"} />
       <main className="mx-auto max-w-[1960px]">
         <TitleImage
           page="gallery" 
