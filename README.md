@@ -14,7 +14,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots](#screensshots)
-- [License](#license)
 
 ## Features
 
@@ -109,7 +108,3 @@ To run this project locally, follow these steps:
 
 - Use the **hamburger menu** on the top right to navigate between routes.
 - Explore each section to learn more about the trip, crew, and photos. Really not much more to it!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
