@@ -83,7 +83,7 @@ export default function SharedModal({
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority
-                  alt="Four Pass Loop image"
+                  alt="Four Pass Loop Trip image"
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>
