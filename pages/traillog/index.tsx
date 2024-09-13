@@ -6,7 +6,7 @@ import JournalPage from "../../components/JournalPage";
 const TrailLog : NextPage = () => {
   return (
     <>
-      <Heading title={"Trail Log"} />
+      <Heading title={"Trail Log - Four Days on the Four Pass Loop"} />
       <main className="mx-auto max-w-[1960px]">
         <TitleImage
           page="traillog" 

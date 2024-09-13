@@ -9,7 +9,7 @@ import { CldImage } from "next-cloudinary";
 const FourPassLoop : NextPage = () => {
   return (
     <>
-      <Heading title={"The Loop"} />
+      <Heading title={"The Loop - Four Days on the Four Pass Loop"} />
       <main className="mx-auto max-w-[1960px]">
         <TitleImage
           page="loop" 

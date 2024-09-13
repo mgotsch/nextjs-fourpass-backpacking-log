@@ -6,7 +6,7 @@ import crewMembers from "../../data/crewMembers";
 const Crew = () => {
   return(
     <>
-      <Heading title={"Our Crew"} />
+      <Heading title={"Our Crew - Four Days on the Four Pass Loop"} />
       <main className="mx-auto max-w-[1960px]">
         <TitleImage
           page="crew" 
