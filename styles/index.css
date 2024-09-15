@@ -81,7 +81,6 @@ nav {
 }
 
 .team-container {
-  width: 100vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;

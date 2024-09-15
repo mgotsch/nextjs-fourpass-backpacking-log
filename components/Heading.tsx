@@ -1,11 +1,10 @@
-// Heading.tsx
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { motion, Variants } from 'framer-motion';
 
-// Framer Motion variants for list items
+// Variants for nav list items
 const itemVariants: Variants = {
   open: {
     opacity: 1,
