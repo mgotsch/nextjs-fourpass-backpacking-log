@@ -1,12 +1,14 @@
 import type { NextPage } from 'next'
+import { CldImage } from "next-cloudinary";
 import Heading from "../../components/Heading";
 import TitleImage from "../../components/TitleImage";
 import DayCard from "../../components/DayCard";
 import SectionTitle from '../../components/SectionTitle';
+import AnimatedSection from '../../components/AnimatedSection';
 import dayData from "../../data/dayData";
-import { CldImage } from "next-cloudinary";
 
 const FourPassLoop : NextPage = () => {
+  
   return (
     <>
       <Heading title={"The Loop - Four Days on the Four Pass Loop"} />
@@ -24,7 +26,10 @@ const FourPassLoop : NextPage = () => {
               subtitle="For those without an eon to read through the Trail Log, here's your TL;DR"
             />
             <div className="grid lg:grid-cols-2 gap-4 text-justify">
-              <div className="order-1 lg:order-1 flex flex-col justify-center p-4 xl:text-lg">
+              <AnimatedSection
+                className="order-1 lg:order-1 flex flex-col justify-center p-4 xl:text-lg"
+                direction="left"
+              >
                 <p className="m-2">
                   The Four Pass Loop in the Maroon Bells-Snowmass Wilderness of Colorado is a stunning and challenging trek 
                   that offers hikers an unforgettable journey through some of the most picturesque landscapes in the Rocky 
@@ -33,8 +38,11 @@ const FourPassLoop : NextPage = () => {
                   And if that alone isn't enough for your group (such as yours truly's), you can tack on a few extra miles to 
                   add in a stop and night's stay at Geneva Lake, a secluded, enchanting, and sometimes buggy alpine lake. 
                 </p>
-              </div>
-              <div className="order-2 lg:order-2 content-center">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-2 lg:order-2 content-center"
+                direction="right"
+              >
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174616/Four%20Pass%20Loop/20230805-_DSF2245_ipwag5.jpg"
                   width={810}
@@ -44,8 +52,11 @@ const FourPassLoop : NextPage = () => {
                   priority
                   className="w-auto max-h-[540px] mx-auto my-4"
                 /> 
-              </div>
-              <div className="order-4 lg:order-3 content-center">          
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-4 lg:order-3 content-center"
+                direction="left"
+              >
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174117/Four%20Pass%20Loop/20230804-_DSF1037_dbsg4t.jpg"
                   width={810}
@@ -55,8 +66,11 @@ const FourPassLoop : NextPage = () => {
                   priority
                   className="w-auto max-h-[540px] mx-auto my-4"
                 />
-              </div>
-              <div className="order-3 lg:order-4 flex flex-col justify-center p-4 xl:text-lg">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-3 lg:order-4 flex flex-col justify-center p-4 xl:text-lg"
+                direction="right"
+              >
                 <p className="m-2">
                   The dramatic array scenery that can be taken in on this trail can only be described as awe-inspiring. From 
                   jagged peaks & lush, wildflower-filled meadows to crystal-clear alpine lakes and dense forests of aspen and pine, 
@@ -66,8 +80,11 @@ const FourPassLoop : NextPage = () => {
                   abundant throughout the area. It’s not uncommon to spot marmots, pikas, and the occasional elk or deer along 
                   the trail, a reminder of how wild this place still is. 
                 </p>
-              </div>
-              <div className="order-5 lg:order-5 flex flex-col justify-center p-4 xl:text-lg">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-5 lg:order-5 flex flex-col justify-center p-4 xl:text-lg"
+                direction="left"
+              >
                 <p className="m-2">
                   But all this splendor doesn't come easy! Each of the four passes the trail is named for reach elevations over 
                   12,000 feet, so the climbs leave you as short of breath as the panoramic views at the top do. And unless you're 
@@ -76,8 +93,11 @@ const FourPassLoop : NextPage = () => {
                   down your oversized pack. Safe to say most days end in complete, if satisfied, exhaustion and an easier task 
                   identifying areas that aren't sore than listing off the countless that are. 
                 </p>
-              </div>
-              <div className="order-6 lg:order-6 content-center">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-6 lg:order-6 content-center"
+                direction="right"
+              >
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174466/Four%20Pass%20Loop/20230805-_DSF1833_jdgrv2.jpg"
                   width={810}
@@ -87,8 +107,11 @@ const FourPassLoop : NextPage = () => {
                   priority
                   className="w-auto max-h-[540px] mx-auto my-4"
                 />
-              </div>
-              <div className="order-8 lg:order-7 content-center">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-8 lg:order-7 content-center"
+                direction="left"
+              >
                 <CldImage
                   src="https://res.cloudinary.com/dknv1ji7n/image/upload/v1703174764/Four%20Pass%20Loop/20230806-_DSF2657_kigyn1.jpg"
                   width={810}
@@ -98,8 +121,11 @@ const FourPassLoop : NextPage = () => {
                   priority
                   className="w-auto max-h-[540px] mx-auto my-4"
                 />
-              </div>
-              <div className="order-7 lg:order-8 flex flex-col justify-center p-4 xl:text-lg">
+              </AnimatedSection>
+              <AnimatedSection 
+                className="order-7 lg:order-8 flex flex-col justify-center p-4 xl:text-lg"
+                direction="right"
+              >
                 <p className="m-2">
                   In spite of these harsh realities, the general masses have not been dissuaded and competition for the limited 
                   overnight permits is fierce. So much so in fact that most are gone within minutes of their release and for the 
@@ -111,7 +137,7 @@ const FourPassLoop : NextPage = () => {
                   to embark on a journey of a lifetime! For a long-winded diatribe on what exactly this trail could have in 
                   store for you, check out the trail log!
                 </p>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
           <div className="h-8"></div>
@@ -121,7 +147,9 @@ const FourPassLoop : NextPage = () => {
               subtitle="Where my cartography heads at??"
             />
             <div className="h-8"></div>
-            <iframe className="alltrails" src="https://www.alltrails.com/widget/map/four-pass-loop-71a5c05-2?scrollZoom=false&u=i&sh=kp35c4" width="80%" height="600" title="Four Pass Loop Trail"></iframe>
+            <AnimatedSection direction="down">
+              <iframe className="alltrails" src="https://www.alltrails.com/widget/map/four-pass-loop-71a5c05-2?scrollZoom=false&u=i&sh=kp35c4" width="80%" height="600" title="Four Pass Loop Trail"></iframe>
+            </AnimatedSection>
           </div>
           <div className="h-8"></div>
           <div>
@@ -130,12 +158,12 @@ const FourPassLoop : NextPage = () => {
               subtitle="For you advanced metrics folks!!"
             />
             <div className="h-8"></div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4">
+            <AnimatedSection className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4" direction="down">
               <DayCard {...dayData[1]}/>
               <DayCard {...dayData[2]}/>
               <DayCard {...dayData[3]}/>
               <DayCard {...dayData[4]}/>
-            </div>
+            </AnimatedSection>
           </div>
           <div className="h-8"></div>
         </div>
