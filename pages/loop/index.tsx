@@ -158,7 +158,7 @@ const FourPassLoop : NextPage = () => {
               subtitle="For you advanced metrics folks!!"
             />
             <div className="h-8"></div>
-            <AnimatedSection className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4" direction="up">
+            <AnimatedSection className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4" direction="down">
               <DayCard {...dayData[1]}/>
               <DayCard {...dayData[2]}/>
               <DayCard {...dayData[3]}/>
