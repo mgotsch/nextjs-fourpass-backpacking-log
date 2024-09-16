@@ -1,10 +1,12 @@
+// pages/crew/index.tsx
+import type { NextPage } from 'next'
 import Heading from "../../components/Heading";
 import TitleImage from "../../components/TitleImage";
 import CrewMember from "../../components/CrewMember";
+import AnimatedSection from '../../components/AnimatedSection';
 import crewMembers from "../../data/crewMembers";
-import { motion } from "framer-motion";
 
-const Crew = () => {
+const Crew: NextPage = () => {
   const staggerDelay = 0.2; // Delay between each crew member's animation
 
   return(
@@ -16,26 +18,17 @@ const Crew = () => {
           title="Our Crew"
           subTitle="An intrepid group of some of my favorite folks: nine confirmed people, one possible cyborg, one dog, and a mystical, mysterious, all-powerful force. Wouldn't have been possible (or half as fun) without them all."
         />
-        <motion.div 
-          className="team-container p-8"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: staggerDelay
-              }
-            }
-          }}
-        >
+        <div className="team-container p-8">
           {crewMembers.map((member, index) => (
-            <CrewMember 
+            <AnimatedSection 
               key={member.name} 
-              crewMember={member} 
+              direction="left"
               delay={index * staggerDelay}
-            />
+            >
+              <CrewMember crewMember={member} />
+            </AnimatedSection>
           ))}
-        </motion.div>
+        </div>
       </main>
     </>
   );
