@@ -7,7 +7,7 @@ import AnimatedSection from '../../components/AnimatedSection';
 import crewMembers from "../../data/crewMembers";
 
 const Crew: NextPage = () => {
-  const staggerDelay = 0.2; // Delay between each crew member's animation
+  const staggerDelay = 0.07;
 
   return(
     <>
@@ -25,7 +25,7 @@ const Crew: NextPage = () => {
               direction="left"
               delay={index * staggerDelay}
             >
-              <CrewMember crewMember={member} />
+              <CrewMember crewMember={member} delay={index} />
             </AnimatedSection>
           ))}
         </div>
