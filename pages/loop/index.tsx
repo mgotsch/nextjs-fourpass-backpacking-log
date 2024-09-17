@@ -25,7 +25,7 @@ const FourPassLoop : NextPage = () => {
               title="Four Pass Loop Overview"
               subtitle="For those without an eon to read through the Trail Log, here's your TL;DR"
             />
-            <div className="grid lg:grid-cols-2 gap-4 text-justify">
+            <div className="grid lg:grid-cols-2 gap-4 text-justify overflow-hidden">
               <AnimatedSection
                 className="order-1 lg:order-1 flex flex-col justify-center p-4 xl:text-lg"
                 direction="left"
