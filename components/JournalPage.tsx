@@ -7,6 +7,7 @@ import LogCarousel from "./LogCarousel";
 import DayCard from "./DayCard";
 import dayData from "../data/dayData";
 import dayMaps from "../data/dayMaps";
+import SectionTitle from "./SectionTitle";
 
 export default function JournalPage() {
   const [transitionDirection, setTransitionDirection] = useState("next");
@@ -161,7 +162,7 @@ export default function JournalPage() {
       </div>
       <div className="h-8"></div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 w-full">
-        <div className="col-span-2 h-[300px] px-4 xl:p-10">
+        <div className="col-span-2 h-[300px] px-4 xl:p-10 my-2">
           <DayCard {...dayData[tripDay]}/>
         </div>
         <div className="col-span-3 px-4">
