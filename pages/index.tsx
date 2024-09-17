@@ -22,7 +22,7 @@ export default function Home() {
           </h3>
         </div>
         <div className="h-10"></div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 justify-center items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-2 justify-center items-center">
           <Link href="/crew">
             <button className="title-button w-40 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-white shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap duration-300">
               Our Crew
