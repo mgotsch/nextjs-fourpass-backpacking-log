@@ -31,7 +31,7 @@ export default function JournalPage() {
         setEntries(parsedEntries);
         setTotalPages(parsedEntries.length);
       });
-    console.log('Done fetching entries: ' + entries);
+    console.log('Done fetching.');
   }, []);
 
   useEffect(() => {
@@ -40,7 +40,6 @@ export default function JournalPage() {
       setPicturePairingData(csvData);
     }
     loadPicturePairingData();
-    console.log('Picture Pairing Data: '+picturePairingData);
   }, []);
   
 
@@ -92,6 +91,13 @@ export default function JournalPage() {
 
   const uniqueImageQueue = getUniqueImageQueue();
   console.log('uniqueImageQueue: '+uniqueImageQueue)
+  useEffect(() => {
+    console.log('Entries updated:', entries);
+  }, [entries]);
+  
+  useEffect(() => {
+    console.log('Picture Pairing Data updated:', picturePairingData);
+  }, [picturePairingData]);
 
   const textVariants = {
     hidden: {
