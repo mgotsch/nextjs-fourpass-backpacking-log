@@ -7,7 +7,6 @@ import LogCarousel from "./LogCarousel";
 import DayCard from "./DayCard";
 import dayData from "../data/dayData";
 import dayMaps from "../data/dayMaps";
-import SectionTitle from "./SectionTitle";
 
 export default function JournalPage() {
   const [transitionDirection, setTransitionDirection] = useState("next");
@@ -32,7 +31,7 @@ export default function JournalPage() {
         setEntries(parsedEntries);
         setTotalPages(parsedEntries.length);
       });
-    console.log('Done fetching.');
+    console.log('Done fetching entries: ' + entries);
   }, []);
 
   useEffect(() => {
@@ -41,7 +40,9 @@ export default function JournalPage() {
       setPicturePairingData(csvData);
     }
     loadPicturePairingData();
+    console.log('Picture Pairing Data: '+picturePairingData);
   }, []);
+  
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -90,6 +91,7 @@ export default function JournalPage() {
   };
 
   const uniqueImageQueue = getUniqueImageQueue();
+  console.log('uniqueImageQueue: '+uniqueImageQueue)
 
   const textVariants = {
     hidden: {
