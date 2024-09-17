@@ -14,7 +14,7 @@ export default function JournalPage() {
   const [totalPages, setTotalPages] = useState(0);
   const [entries, setEntries] = useState([]);
   const [picturePairingData, setPicturePairingData] = useState([]);
-
+  
   useEffect(() => {
     fetch('/api/read-file')
       .then(response => response.json())
@@ -114,7 +114,7 @@ export default function JournalPage() {
           transitionDirection={transitionDirection}
         />
       </div>
-      <div className="mb-4 p-4 w-full max-w-screen-lg lg:h-[275px] content-center">
+      <div className="mb-4 p-4 w-full max-w-screen-lg lg:h-[275px]">
         <motion.div
           key={currentPage}
           variants={textVariants}
@@ -143,7 +143,7 @@ export default function JournalPage() {
               onChange={handlePageChange}
               min="1"
               max={totalPages}
-              className="w-12 px-2 py-1 text-center appearance-none"
+              className="w-16 px-2 py-1 text-center appearance-none"
             />
           </div>
           <div className="p-2 flex items-center">/</div>

@@ -11,15 +11,14 @@ export default function LogCarousel({
   currentPage, 
   uniqueImageQueue, transitionDirection
 } : Props ) {
-  const transitonModifier = transitionDirection === "next" ? -1 : 1;
   
   const positions = {
-    exitRight : (transitonModifier) =>({
+    exitRight : {
       opacity: 0,
       x: "100px",
       scale: 1.2,
       zIndex: 3,
-    }),
+    },
     main : {
       opacity: 1,
       x: "0",
@@ -43,41 +42,6 @@ export default function LogCarousel({
       x: "-300px",
       scale: 0.4,
       zIndex: -1,
-    }
-  }
-
-  const getVariantMatching = (index, direction) => {
-    switch (index) {
-      case 1 :
-        return {
-          'initial': direction === "previous" ? positions.exitRight : positions.exitRight,
-          'animate': direction === "previous" ? positions.exitRight : positions.exitRight,
-          'exit': direction === "previous" ? positions.exitRight: positions.main 
-        }
-      case 2 : 
-        return {
-          'initial': direction === "previous" ? positions.next : positions.exitRight,
-          'animate': direction === "previous" ? positions.main : positions.main,
-          'exit': direction === "previous" ? positions.exitRight: positions.next 
-        }
-      case 3 :
-        return {
-          'initial': direction === "previous" ? positions.nextNext : positions.main,
-          'animate': direction == "previous" ? positions.next : positions.next,
-          'exit': direction === "previous" ? positions.main: positions.nextNext 
-        }
-      case 4 : 
-        return {
-          'initial': direction === "previous" ? positions.next : positions.exitLeft,
-          'animate': direction === "previous" ? positions.nextNext : positions.nextNext,
-          'exit': direction === "previous" ? positions.exitLeft: positions.next 
-        }
-      default:
-        return {
-          'initial': direction === "previous" ? positions.exitRight : positions.exitRight,
-          'animate': direction === "previous" ? positions.exitRight : positions.exitRight,
-          'exit': direction === "previous" ? positions.exitRight: positions.main 
-        }
     }
   }
   
@@ -136,26 +100,15 @@ export default function LogCarousel({
   };
 
   return (
-    <div className="relative flex justify-center items-center w-[810px] h-[540px]">
+    <div className="relative flex justify-center items-center w-full max-w-[810px] h-[540px] mx-auto overflow-visible">
       <AnimatePresence initial={false}>
         {uniqueImageQueue.map((imageSrc, index) => (
           <motion.div
             key={`${currentPage}-${index}`}
-            className="absolute w-auto max-h-[540px]"
-            custom={transitionDirection}
-            variants={positions}
-            initial={{ 
-              // ...getVariantMatching(index, transitionDirection)['initial'], 
-              ...getImageAnimation(index - transitonModifier),
-            }}
-            animate={{
-              // ...getVariantMatching(index, transitionDirection)['animate'], 
-              ...getImageAnimation(index),
-            }}
-            exit={{ 
-              // ...getVariantMatching(index, transitionDirection)['exit'],
-              ...getImageAnimation(index + transitonModifier),
-            }}
+            className="absolute w-full h-full flex items-center justify-center"
+            initial={getImageAnimation(index + (transitionDirection === "next" ? 1 : -1))}
+            animate={getImageAnimation(index)}
+            exit={getImageAnimation(index + (transitionDirection === "next" ? -1 : 1))}
             transition={{
               duration: 0.5,
               ease:"easeInOut",
@@ -168,7 +121,7 @@ export default function LogCarousel({
               dpr="1.7"
               alt={`Trail Log Pic ${currentPage + index + 1}`}
               priority
-              className="w-auto max-h-[540px] rounded-[2rem] border-[5px] border-solid border-[#f5f5f5]"
+              className="w-auto max-h-[540px] rounded-[2rem] border-[5px] border-solid border-gray-200"
             />
           </motion.div>
         ))}
