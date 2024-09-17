@@ -145,6 +145,7 @@ export default function JournalPage() {
               min="1"
               max={totalPages}
               className="w-16 px-2 py-1 text-center appearance-none"
+              aria-labelledby="Page Input"
             />
           </div>
           <div className="p-2 flex items-center">/</div>
