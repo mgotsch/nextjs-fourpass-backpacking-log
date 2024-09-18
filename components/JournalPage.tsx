@@ -17,8 +17,14 @@ export default function JournalPage() {
   
   useEffect(() => {
     fetch('/api/read-file')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log('Received data:', data);
         const parsedEntries = [];
         let currentDay = 0;
         for (const paragraph of data) {
@@ -30,8 +36,11 @@ export default function JournalPage() {
         }
         setEntries(parsedEntries);
         setTotalPages(parsedEntries.length);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
       });
-    console.log('Done fetching.');
+      console.log('Done fetching entries.');
   }, []);
 
   useEffect(() => {
@@ -81,6 +90,7 @@ export default function JournalPage() {
     let page = currentPage - 1;
     while (uniqueImages.length < 4 && page < totalPages) {
       const imageSrc = `${picturePairingData[page]?.link}` || `${picturePairingData[1]?.link}`;
+      console.log(imageSrc);
       if (!uniqueImages.includes(imageSrc)) {
         uniqueImages.push(imageSrc);
       }
