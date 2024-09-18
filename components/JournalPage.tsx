@@ -14,11 +14,17 @@ export default function JournalPage() {
   const [totalPages, setTotalPages] = useState(0);
   const [entries, setEntries] = useState([]);
   const [picturePairingData, setPicturePairingData] = useState([]);
-
+  
   useEffect(() => {
     fetch('/api/read-file')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log('Received data:', data);
         const parsedEntries = [];
         let currentDay = 0;
         for (const paragraph of data) {
@@ -30,8 +36,11 @@ export default function JournalPage() {
         }
         setEntries(parsedEntries);
         setTotalPages(parsedEntries.length);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
       });
-    console.log('Done fetching.');
+      console.log('Done fetching entries.');
   }, []);
 
   useEffect(() => {
@@ -41,6 +50,7 @@ export default function JournalPage() {
     }
     loadPicturePairingData();
   }, []);
+  
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -106,29 +116,30 @@ export default function JournalPage() {
   const tripDay = entries[currentPage]?.day;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="relative mb-4 max-w-screen-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 overflow-hidden">
+      <div className="relative mb-4 w-full max-w-screen-lg">
         <LogCarousel
           currentPage={currentPage}
           uniqueImageQueue={uniqueImageQueue}
           transitionDirection={transitionDirection}
         />
       </div>
-      <div className="mb-4 p-4 max-w-screen-lg lg:h-[275px]">
+      <div className="mb-4 p-4 w-full max-w-screen-lg lg:h-[275px]">
         <motion.div
           key={currentPage}
           variants={textVariants}
           initial="hidden"
           animate="visible"
+          className="prose prose-sm sm:prose lg:prose-lg mx-auto"
         >
           <motion.p variants={textVariants}>
             {entries[currentPage]?.text}
           </motion.p>
         </motion.div>
       </div>
-      <div className="flex items-center space-x-2 relative">
+      <div className="flex items-center space-x-2 relative w-full justify-center">
         <button
-          className={`flex items-center justify-center bg-transparent h-[4.5rem] w-[4.5rem] border-solid ${currentPage !== 0 ? 'cursor-pointer' : 'cursor-default'}`}
+          className={`flex items-center justify-center bg-transparent h-12 w-12 sm:h-[4.5rem] sm:w-[4.5rem] border-solid ${currentPage !== 0 ? 'cursor-pointer' : 'cursor-default'}`}
           onClick={handlePrevPage}
           disabled={currentPage === 0}
         >
@@ -142,7 +153,8 @@ export default function JournalPage() {
               onChange={handlePageChange}
               min="1"
               max={totalPages}
-              className="px-2 py-1 text-center appearance-none"
+              className="w-16 px-2 py-1 text-center appearance-none"
+              aria-labelledby="Page Input"
             />
           </div>
           <div className="p-2 flex items-center">/</div>
@@ -151,7 +163,7 @@ export default function JournalPage() {
           </div>
         </div>
         <button
-          className={`flex items-center justify-center bg-transparent h-[4.5rem] w-[4.5rem] border-solid ${currentPage !== totalPages - 1 ? 'cursor-pointer' : 'cursor-default'}`}
+          className={`flex items-center justify-center bg-transparent h-12 w-12 sm:h-[4.5rem] sm:w-[4.5rem] border-solid ${currentPage !== totalPages - 1 ? 'cursor-pointer' : 'cursor-default'}`}
           onClick={handleNextPage}
           disabled={currentPage === totalPages - 1}
         >
@@ -160,7 +172,7 @@ export default function JournalPage() {
       </div>
       <div className="h-8"></div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 w-full">
-        <div className="col-span-2 h-[300px] px-4 xl:p-10">
+        <div className="col-span-2 h-[300px] px-4 xl:p-10 my-2">
           <DayCard {...dayData[tripDay]}/>
         </div>
         <div className="col-span-3 px-4">
