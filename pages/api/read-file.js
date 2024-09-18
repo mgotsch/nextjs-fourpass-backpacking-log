@@ -8,11 +8,7 @@ export default function handler(req, res) {
     
     const content = readFileSync(filePath, 'utf-8');
     const paragraphs = content.split(/\r?\n\r?\n/).filter(p => p.trim() !== '');
-    
-    console.log('Paragraphs split:', paragraphs.length);
-    console.log('First paragraph:', paragraphs[0]);
-    
-    console.log('File read successfully. Paragraphs:', paragraphs.length);
+    console.log('File read successfully. Paragraph count:', paragraphs.length);
     
     res.status(200).json(paragraphs);
   } catch (error) {

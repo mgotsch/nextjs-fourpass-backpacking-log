@@ -90,7 +90,6 @@ export default function JournalPage() {
     let page = currentPage - 1;
     while (uniqueImages.length < 4 && page < totalPages) {
       const imageSrc = `${picturePairingData[page]?.link}` || `${picturePairingData[1]?.link}`;
-      console.log(imageSrc);
       if (!uniqueImages.includes(imageSrc)) {
         uniqueImages.push(imageSrc);
       }
@@ -100,14 +99,6 @@ export default function JournalPage() {
   };
 
   const uniqueImageQueue = getUniqueImageQueue();
-  console.log('uniqueImageQueue: '+uniqueImageQueue)
-  useEffect(() => {
-    console.log('Entries updated:', entries);
-  }, [entries]);
-  
-  useEffect(() => {
-    console.log('Picture Pairing Data updated:', picturePairingData);
-  }, [picturePairingData]);
 
   const textVariants = {
     hidden: {
