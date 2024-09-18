@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 
 export default function handler(req, res) {
   try {
-    const filePath = join(process.cwd(), 'public', 'data', 'trailLog.txt');
+    const filePath = join(process.cwd(), 'public', 'trailLog.txt');
     console.log('Attempting to read file from:', filePath);
     
     const content = readFileSync(filePath, 'utf-8');
