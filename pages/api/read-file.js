@@ -3,11 +3,14 @@ import { readFileSync } from 'fs';
 
 export default function handler(req, res) {
   try {
-    const filePath = join(process.cwd(), 'public', 'trailLog.txt');
+    const filePath = join(process.cwd(), 'public', 'data', 'trailLog.txt');
     console.log('Attempting to read file from:', filePath);
     
     const content = readFileSync(filePath, 'utf-8');
-    const paragraphs = content.split('\r\n\r\n');
+    const paragraphs = content.split(/\r?\n\r?\n/).filter(p => p.trim() !== '');
+    
+    console.log('Paragraphs split:', paragraphs.length);
+    console.log('First paragraph:', paragraphs[0]);
     
     console.log('File read successfully. Paragraphs:', paragraphs.length);
     
