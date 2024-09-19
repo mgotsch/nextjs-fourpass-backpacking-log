@@ -15,7 +15,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   delay = 0
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   
   const getInitialPosition = () => {
     switch(direction) {

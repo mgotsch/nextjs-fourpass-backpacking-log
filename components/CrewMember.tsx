@@ -19,7 +19,7 @@ export default function CrewMember({
       ref={ref}
       initial={{ opacity: 0, x: -200 }}
       animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -200 }}
-      transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1], delay: Math.min(0.1 * delay, 0.8) }}
+      transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1], delay: Math.min(0.1 * delay, 0.4) }}
     >
       <Image
         alt="Crew Member Photo"
