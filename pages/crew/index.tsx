@@ -21,6 +21,7 @@ const Crew: NextPage = () => {
         <div className="team-container p-8">
           {crewMembers.map((member, index) => (
             <AnimatedSection 
+              className='overflow-hidden content-center'
               key={member.name} 
               direction="left"
               delay={index * staggerDelay}

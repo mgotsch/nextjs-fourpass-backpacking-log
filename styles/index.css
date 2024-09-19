@@ -86,6 +86,13 @@ nav {
   gap: 20px;
 }
 
+/* One CrewMember per row on mobile */
+@media (max-width: 768px) { 
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .my-masonry-grid {
   display: flex;
   margin-left: -20px; /* gutter size offset */
