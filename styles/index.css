@@ -8,6 +8,10 @@
   }
 }
 
+html {
+  color: rgb(226 232 240 / var(--tw-text-opacity), white);
+}
+
 h1 { 
   font-family: var(--font-oswald);
 }
