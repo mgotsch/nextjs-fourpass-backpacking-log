@@ -19,7 +19,7 @@ const TrailLog : NextPage = () => {
               title="Dinner & A Show??"
               subtitle="In a world where long stretches of text are not enough stimulation, I've given you something to look at as you plod along!"
           />
-          <div className="h-8"></div>
+          <div className="h-4"></div>
           <div>
             <JournalPage />
           </div>

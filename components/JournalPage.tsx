@@ -130,7 +130,7 @@ export default function JournalPage() {
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          className="prose prose-sm sm:prose lg:prose-lg mx-auto"
+          className="prose prose-sm sm:prose lg:prose-lg mx-auto text-justify"
         >
           <motion.p variants={textVariants}>
             {entries[currentPage]?.text}
