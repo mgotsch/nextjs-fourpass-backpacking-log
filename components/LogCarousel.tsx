@@ -1,18 +1,30 @@
 import { CldImage } from "next-cloudinary";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { useSwipeable } from 'react-swipeable';
 
 interface Props {
   currentPage: number
   uniqueImageQueue: any
   transitionDirection: string
+  onSwipeLeft: () => void;
+  onSwipeRight: () => void;
 }
 
 export default function LogCarousel({
   currentPage, 
-  uniqueImageQueue, transitionDirection
+  uniqueImageQueue,
+  transitionDirection,
+  onSwipeLeft,
+  onSwipeRight
 } : Props ) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: onSwipeLeft,
+    onSwipedRight: onSwipeRight,
+    trackMouse: true
+  });
   
   const getImageAnimation = (index) => {
     switch (index) {
@@ -85,7 +97,8 @@ export default function LogCarousel({
           >
             <CldImage
               src={imageSrc}
-              width={isMobile ? 400 : 810}              height={isMobile ? 300 : 540}
+              width={isMobile ? 400 : 810}              
+              height={isMobile ? 300 : 540}
               dpr="1.7"
               alt={`Trail Log Pic ${currentPage + index + 1}`}
               priority
