@@ -45,7 +45,7 @@ export default function Heading({
       </Head>
       <header
         className={`fixed top-0 left-0 right-0 text-white p-2 sm:px-8 flex justify-between items-center z-10 ${
-          navbar ? 'bg-black shadow-lg' : 'bg-transparent'
+          (navbar || menuOpen) ? 'bg-black shadow-lg' : 'bg-transparent'
         }`}
       >
         {/* Logo */}
@@ -97,7 +97,7 @@ export default function Heading({
           animate={menuOpen ? 'open' : 'closed'}
           className={`${
             menuOpen
-              ? `absolute top-full right-0 px-4 flex flex-col items-end pr-7 ${navbar ? "bg-black shadow-lg" : "bg:transparent"}`
+              ? `absolute top-full right-0 px-4 flex flex-col items-end pr-7 ${(navbar || menuOpen) ? "bg-black shadow-lg" : "bg:transparent"}`
               : 'hidden'
           } lg:flex lg:w-auto`}
         >
@@ -125,7 +125,7 @@ export default function Heading({
             }}
             className={`navlinks ${
               menuOpen
-                ? `absolute top-full right-0 w-max h-auto px-4 py-1 ${navbar ? "bg-black shadow-lg" : "bg:transparent"}`
+                ? 'absolute top-full right-0 w-max h-auto px-4 py-1 bg-black shadow-lg'
                 : 'hidden'
             }`}
             style={{ pointerEvents: menuOpen ? "auto" : "none", maxWidth: '250px' }}
