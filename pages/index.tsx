@@ -2,11 +2,10 @@ import Link from 'next/link';
 import Heading from '../components/Heading';
 
 export default function Home() {
-
   return(
     <>
       <Heading title={"Four Days on the Four Pass Loop"}/>
-      <div className="bg-home h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center">
+      <div className="bg-home min-h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center pt-20 sm:pt-24">
         <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm sm:py-2 md:py-6 lg:py-10 border-8 border-gray-200 border-double w-4/5 max-w-[700px]">
           <h1 className="my-4 text-6xl font-bold uppercase">
             Four Days <div className="md:hidden"></div><span className="text-4xl md:text-5xl">on the</span><div className="h-2"></div>Four Pass Loop
@@ -47,5 +46,4 @@ export default function Home() {
       </div>
     </>
   );
-  
 }
