@@ -181,7 +181,7 @@ export default function JournalPage() {
       </div>
       <div className="h-8"></div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 w-full">
-        <div className="col-span-2 h-[225px] px-4 xl:p-10 my-2">
+        <div className="col-span-2 h-[225px] sm:h-[300px] px-4 xl:p-10 my-2">
           <DayCard {...dayData[tripDay]}/>
         </div>
         <div className="col-span-3 px-4">
