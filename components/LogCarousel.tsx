@@ -1,49 +1,30 @@
 import { CldImage } from "next-cloudinary";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+import { useSwipeable } from 'react-swipeable';
 
 interface Props {
   currentPage: number
   uniqueImageQueue: any
   transitionDirection: string
+  onSwipeLeft: () => void;
+  onSwipeRight: () => void;
 }
 
 export default function LogCarousel({
   currentPage, 
-  uniqueImageQueue, transitionDirection
+  uniqueImageQueue,
+  transitionDirection,
+  onSwipeLeft,
+  onSwipeRight
 } : Props ) {
-  
-  const positions = {
-    exitRight : {
-      opacity: 0,
-      x: "100px",
-      scale: 1.2,
-      zIndex: 3,
-    },
-    main : {
-      opacity: 1,
-      x: "0",
-      scale: 1,
-      zIndex: 2,
-    },
-    next : {
-      opacity: 0.66,
-      x: "-100px",
-      scale: 0.8,
-      zIndex: 1,
-    },
-    nextNext : {
-      opacity: 0.33,
-      x: "-200px",
-      scale: 0.6,
-      zIndex: 0,
-    },
-    exitLeft : {
-      opacity: 0,
-      x: "-300px",
-      scale: 0.4,
-      zIndex: -1,
-    }
-  }
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: onSwipeLeft,
+    onSwipedRight: onSwipeRight,
+    trackMouse: true
+  });
   
   const getImageAnimation = (index) => {
     switch (index) {
@@ -100,9 +81,9 @@ export default function LogCarousel({
   };
 
   return (
-    <div className="relative flex justify-center items-center w-full max-w-[810px] h-[540px] mx-auto overflow-visible">
+    <div className="relative flex justify-center items-center w-full max-w-[810px] h-[300px] sm:h-[540px] mx-auto overflow-hidden">
       <AnimatePresence initial={false}>
-        {uniqueImageQueue.map((imageSrc, index) => (
+        {uniqueImageQueue.slice(0, isMobile ? 3 : 4).map((imageSrc, index) => (
           <motion.div
             key={`${currentPage}-${index}`}
             className="absolute w-full h-full flex items-center justify-center"
@@ -111,17 +92,17 @@ export default function LogCarousel({
             exit={getImageAnimation(index + (transitionDirection === "next" ? -1 : 1))}
             transition={{
               duration: 0.5,
-              ease:"easeInOut",
+              ease: "easeInOut",
             }}
           >
             <CldImage
               src={imageSrc}
-              width={810}
-              height={540}
+              width={isMobile ? 400 : 810}              
+              height={isMobile ? 300 : 540}
               dpr="1.7"
               alt={`Trail Log Pic ${currentPage + index + 1}`}
               priority
-              className="w-auto max-h-[540px] rounded-[2rem] border-[5px] border-solid border-gray-200"
+              className="w-auto max-h-[300px] sm:max-h-[540px] rounded-[1rem] sm:rounded-[2rem] border-[3px] sm:border-[5px] border-solid border-gray-200"
             />
           </motion.div>
         ))}

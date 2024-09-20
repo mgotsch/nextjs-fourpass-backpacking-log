@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { fetchCSV } from '../utils/csvParser';
 import { motion } from "framer-motion";
+import { useSwipeable } from 'react-swipeable';
 import LogCarousel from "./LogCarousel";
 import DayCard from "./DayCard";
 import dayData from "../data/dayData";
@@ -77,6 +78,12 @@ export default function JournalPage() {
     setCurrentPage((prevPage) => (prevPage === totalPages - 1 ? totalPages - 1 : prevPage + 1));
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNextPage,
+    onSwipedRight: handlePrevPage,
+    trackMouse: true
+  });
+
   const handlePageChange = (e) => {
     const pageNumber = parseInt(e.target.value, 10);
     if (pageNumber >= 1 && pageNumber <= totalPages) {
@@ -116,12 +123,14 @@ export default function JournalPage() {
   const tripDay = entries[currentPage]?.day;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 overflow-hidden">
+    <div {...swipeHandlers} className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 overflow-hidden">
       <div className="relative mb-4 w-full max-w-screen-lg">
         <LogCarousel
           currentPage={currentPage}
           uniqueImageQueue={uniqueImageQueue}
           transitionDirection={transitionDirection}
+          onSwipeLeft={handleNextPage}
+          onSwipeRight={handlePrevPage}
         />
       </div>
       <div className="mb-4 p-4 w-full max-w-screen-lg lg:h-[275px]">
@@ -130,7 +139,7 @@ export default function JournalPage() {
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          className="prose prose-sm sm:prose lg:prose-lg mx-auto"
+          className="prose prose-sm sm:prose lg:prose-lg mx-auto text-justify"
         >
           <motion.p variants={textVariants}>
             {entries[currentPage]?.text}
@@ -172,7 +181,7 @@ export default function JournalPage() {
       </div>
       <div className="h-8"></div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 w-full">
-        <div className="col-span-2 h-[300px] px-4 xl:p-10 my-2">
+        <div className="col-span-2 h-[225px] sm:h-[300px] px-4 xl:p-10 my-2">
           <DayCard {...dayData[tripDay]}/>
         </div>
         <div className="col-span-3 px-4">

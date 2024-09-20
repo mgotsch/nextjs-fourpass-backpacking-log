@@ -8,6 +8,10 @@
   }
 }
 
+html {
+  color: rgb(226 232 240 / var(--tw-text-opacity), white);
+}
+
 h1 { 
   font-family: var(--font-oswald);
 }
@@ -48,19 +52,19 @@ iframe {
 }
 
 header {
-  -webkit-transition: background-color 0.5s;
-  -moz-transition: background-color 0.5s;
-  -o-transition: background-color 0.5s;
-  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.7s;
+  -moz-transition: background-color 0.7s;
+  -o-transition: background-color 0.7s;
+  transition: background-color 0.7s;
 }
 
 nav {
   position: fixed;
   top: 0px;
-  -webkit-transition: background-color 0.5s;
-  -moz-transition: background-color 0.5s;
-  -o-transition: background-color 0.5s;
-  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.7s;
+  -moz-transition: background-color 0.7s;
+  -o-transition: background-color 0.7s;
+  transition: background-color 0.7s;
 }
 
 .transparentNav {
@@ -84,6 +88,13 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
+}
+
+/* One CrewMember per row on mobile */
+@media (max-width: 768px) { 
+  .team-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .my-masonry-grid {
