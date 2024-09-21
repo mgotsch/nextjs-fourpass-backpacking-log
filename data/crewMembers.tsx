@@ -5,7 +5,7 @@ const crewMembers: CrewMemberProps[] = [
     id: 1,
     name: 'Mac',
     role: 'Expedition Leader',
-    blurb: 'The head honcho, the big cheese, the crew’s veritable Ernest Shackleton. Have I gone to far? Perhaps, but I’m the one making the site and writing the copy, so tough luck. This important role does not come without hard work and sacrifice! I rallied the troops, braved the doomsday-prepper’s lair to acquire affordable freeze dried meals, made packing lists, hosted coordination calls, and selflessly tripped over a root night one and destroyed McInnes’ chair to teach everyone a valuable lesson about bringing untested gear into the field (you’re welcome Cam)!',
+    blurb: 'The head honcho, the big cheese, the crew’s veritable Ernest Shackleton. Have I gone too far? Perhaps, but I’m the one making the site and writing the copy, so tough luck. This important role does not come without hard work and sacrifice! I rallied the troops, braved the doomsday-prepper’s lair to acquire affordable freeze dried meals, made packing lists, hosted coordination calls, and selflessly tripped over a root night one and destroyed McInnes’ chair to teach everyone a valuable lesson about bringing untested gear into the field (you’re welcome Cam)!',
     image: '/images/team/Mac.jpg',
   },
   {
