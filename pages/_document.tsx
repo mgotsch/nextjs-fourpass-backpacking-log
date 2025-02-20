@@ -8,11 +8,11 @@ class MyDocument extends Document {
           <link rel="icon" href="/icon.ico" />
           <meta
             name="description"
-            content="A collection of photos and writing from the best four days (and the best 4 passes) of the summer of '23."
+            content="A collection of photos and writing from the best four days (and the best four passes) of the Summer of '23."
           />
           <meta
             property="og:description"
-            content="A collection of photos and writing from the best four days (and the best 4 passes) of the summer of '23."
+            content="A collection of photos and writing from the best four days (and the best four passes) of the Summer of '23."
           />
           <meta property="og:title" content="Four Days on the Four Pass Loop" />
           <meta property="og:image" content="/og-image.png" />
@@ -21,7 +21,7 @@ class MyDocument extends Document {
           <meta name="twitter:title" content="Four Days on the Four Pass Loop" />
           <meta
             name="twitter:description"
-            content="A collection of photos and writing from the best four days (and the best 4 passes) of the summer of '23."
+            content="A collection of photos and writing from the best four days (and the best four passes) of the Summer of '23."
           />
           <meta name="twitter:image" content="/og-image.png" />
         </Head>
