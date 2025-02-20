@@ -7,8 +7,8 @@ export default function Home() {
       <Heading title={"Four Days on the Four Pass Loop"}/>
       <div className="bg-home min-h-screen bg-scroll bg-no-repeat bg-cover bg-center backdrop-blur text-slate-200 flex flex-col justify-center items-center pt-20 sm:pt-24">
         <div className="text-slate-200 flex flex-col justify-center items-center text-center backdrop-blur-sm sm:py-2 md:py-6 lg:py-10 border-8 border-gray-200 border-double w-4/5 max-w-[700px]">
-          <h1 className="my-4 text-6xl font-bold uppercase">
-            Four Days <div className="md:hidden"></div><span className="text-4xl md:text-5xl">on the</span><div className="h-2"></div>Four Pass Loop
+          <h1 className="my-4 text-5xl md:text-6xl font-bold uppercase">
+            Four Days <div className="md:hidden"></div><span className="text-3xl md:text-5xl">on the</span><div className="h-2"></div>Four Pass Loop
           </h1>
           <h2 className="text-xl">
             Maroon Bells - Snowmass Wilderness
@@ -20,8 +20,8 @@ export default function Home() {
             August 03 - 06, 2023
           </h3>
         </div>
-        <div className="h-10"></div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-2 justify-center items-center">
+        <div className="h-6 md:h-10"></div>
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-10 m-2 justify-center items-center">
           <Link href="/crew">
             <button className="title-button w-40 backdrop-blur-sm text-slate-200 font-semibold py-2 px-4 border-2 border-gray-200 shadow hover:bg-slate-200 hover:text-gray-600 text-nowrap duration-300">
               Our Crew
