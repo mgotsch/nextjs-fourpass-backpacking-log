@@ -36,7 +36,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
     <>
       <Heading title={"Photo Gallery - Four Days on the Four Pass Loop"} />
-      <main className="mx-auto max-w-[1960px]">
+      <div className="mx-auto max-w-[1960px]">
         <TitleImage
           page="gallery" 
           title="Photo Gallery"
@@ -81,7 +81,7 @@ const Gallery: NextPage = ({ images }: { images: ImageProps[] }) => {
             </Link>
           ))}
         </Masonry>
-      </main>
+      </div>
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Built and shot by {' '}
         <a

@@ -12,7 +12,7 @@ const Crew: NextPage = () => {
   return(
     <>
       <Heading title={"Our Crew - Four Days on the Four Pass Loop"} />
-      <main className="mx-auto max-w-[1960px]">
+      <div className="mx-auto max-w-[1960px]">
         <TitleImage
           page="crew" 
           title="Our Crew"
@@ -30,7 +30,7 @@ const Crew: NextPage = () => {
             </AnimatedSection>
           ))}
         </div>
-      </main>
+      </div>
     </>
   );
 }

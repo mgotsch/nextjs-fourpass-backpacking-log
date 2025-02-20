@@ -8,7 +8,7 @@ const TrailLog : NextPage = () => {
   return (
     <>
       <Heading title={"Trail Log - Four Days on the Four Pass Loop"} />
-      <main className="mx-auto max-w-[1960px]">
+      <div className="mx-auto max-w-[1960px]">
         <TitleImage
           page="traillog" 
           title="Trail Log"
@@ -25,7 +25,7 @@ const TrailLog : NextPage = () => {
           </div>
           <div className="h-8"></div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

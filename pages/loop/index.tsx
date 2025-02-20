@@ -12,7 +12,7 @@ const FourPassLoop : NextPage = () => {
   return (
     <>
       <Heading title={"The Loop - Four Days on the Four Pass Loop"} />
-      <main className="mx-auto max-w-[1960px]">
+      <div className="mx-auto max-w-[1960px]">
         <TitleImage
           page="loop" 
           title="The Loop"
@@ -167,8 +167,8 @@ const FourPassLoop : NextPage = () => {
           </div>
           <div className="h-8"></div>
         </div>
-        </main>
-      </>
+      </div>
+    </>
   );
 }
 
